@@ -1,0 +1,157 @@
+﻿@model viettours.Models.account
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+}
+<div class="form-qltk" style="height: 450px; background: #fff; margin-top: 30px;">
+
+
+    <h1 style="text-align: center; color: #f85050; font-size: 36px; font-weight: 700;">Thông tin tài khoản</h1>
+    @using (Html.BeginForm("KhachHangQuanLyTaiKhoan", "KhachHangQLTaiKhoan"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            <table class="bang-user">
+                <tr>
+                    @*<td>@Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })</td>*@
+                    <td style="font-size:18px;">Tên đăng nhập :</td>
+                    <td>
+                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control username", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr style="display:none;visibility:hidden;">
+                    <td style="font-size:18px;">
+                        @* @Html.HiddenFor(model => model.pass, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        Mật khẩu hiện tại :
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.pass, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                        @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:18px;">
+                        @* @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        Địa chỉ email :
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:18px;">
+                        @* @Html.LabelFor(model => model.diachi, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        Địa chỉ liên hệ :
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr style="display:none;visibility:hidden;">
+                    <td>
+                        @Html.LabelFor(model => model.quyenhan, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.quyenhan, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.quyenhan, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="col-md-offset-2 col-md-10">
+                            <ul class="nutok" style="list-style-type:none;margin-left:66px;">
+                                <li>
+                                    <input type="submit" value="Cập nhật" class="doimatkhau btn" style="width:78px;margin-right:20px" />
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Đổi mật khẩu", "DoiMatKhauUser", null, new { @class = "doimatkhau btn" })
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="2">
+                            @if (ViewBag.error != null)
+                            {
+                                <span class=" alert-info info" style="text-align: center; display: block; font-size: 25px; color: #0133fb;">@ViewBag.error</span>
+                            }
+                        </td>
+                    </tr>
+            </table>
+        </div>
+       @* if (ViewBag.error != null)
+        {
+            <div class=" alert-info info">@ViewBag.error</div>
+        }*@
+    }
+</div>
+
+<style>
+    .form-horizontal{
+       @* min-height:500px;
+        margin-top:20px;*@ 
+       text-align:center;
+    }
+    table.bang-user {
+        width: 80%;
+        margin: 0 auto;
+        margin-top:37px;
+       
+        height: 100%;
+    }
+        table.bang-user tr {
+            height: 50px;
+        }
+    table.bang-user input {
+        width:80%;
+
+    }
+        table.bang-user input.btnEdit {
+            width: 64px;
+            height: 50px;
+            background-color: #417eee;
+            color: #ffffff;
+            border: 1px solid #ccc;
+
+            margin-left: 151px;
+            border-radius: 50%;
+        }
+        table.bang-user input.btnEdit {
+            width: 78px;
+            height: 28px;
+            background-color: #417eee;
+            color: #ffffff;
+            border: 1px solid #ccc;
+          
+            padding: 3px;
+            text-align: center;
+        }
+    .form-control.username {
+        border:none;
+    }
+    .nutok li{
+        display:inline-block;
+    }
+    .doimatkhau {
+        background-color: #417eee;
+        color: #fff;
+        text-decoration: none;
+        padding: 5px 0;
+        border-radius: 3px;
+    }
+    .doimatkhau:hover{
+        color:#fff;
+        text-decoration:none;
+    }
+</style>
+

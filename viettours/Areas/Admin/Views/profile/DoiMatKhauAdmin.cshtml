@@ -1,0 +1,73 @@
+﻿
+
+@{
+    ViewBag.Title = "DoiMatKhauAdmin";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("DoiMatKhau", "profile"))
+{
+    <table class="tb-form-mk" style="margin:0 auto;background-color:#fff;height:80%;">
+        <tr>
+            <th>Mật khẩu hiện tại</th>
+            <td>
+
+                <input type="password" class="password dkinput" id="txtMatKhau" name="passold" required="" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,30}" />
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                Nhập mật khẩu mới
+            </th>
+            <td>
+                <input type="password" class="password dkinput" id="txtMatKhau" name="passnew" required="" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,30}" />
+            </td>
+
+        </tr>
+        <tr>
+            <th> Xác nhận mật khẩu</th>
+            <td>
+                <input type="password" class="password dkinput" id="txtMatKhau" name="repass" required="" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,30}" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center;">
+                <input type="submit" name="name" class="btn" style="background-color:#2054ee;color:#fff;" value="Xác nhận" />
+            </td>
+        </tr>
+    </table>
+    <br />
+
+    <style>
+        .password.dkinput{
+            font-size:15px;
+            background-color:#fff;
+            @*height:20px;*@
+            margin:0 auto;
+            border:1px solid #808080;
+            border-radius:3px;
+            height:23px;
+           padding:2px;
+
+        }
+        .tb-form-mk {
+           @* height:80%;*@
+            text-align:center;
+            padding:10px;
+        }
+        .tb-form-mk , .tb-form-mk tr,.tb-form-mk td{
+            border:15px solid #fff;
+        }
+        .tb-form-mk {
+            font-size: 15px;
+            text-align:right;
+        }
+
+    </style>
+}
+  @if(ViewBag.err != null)
+    {
+    <div class="danger alert-danger" style="text-align:center">@ViewBag.err </div>
+    }
+

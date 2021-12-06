@@ -1,0 +1,176 @@
+﻿
+@using viettours.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<tour_manage_Result>
+@{
+    ViewBag.Title = "Danh sách tour";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    var a = new viettoursDBEntities().danhmucs.ToList();
+
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý tours</strong></p>
+}
+
+@Html.ActionLink("Tạo mới", "Create", null, new { @class = "taomoiAll" })
+<style>
+    .taomoiAll {
+        display: block;
+        padding: 10px 10px;
+        background-color: #398af8;
+        color: white;
+       
+        width: 100px;
+        text-decoration: none;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        
+    }
+
+    a.taomoiAll:hover, a.taomoiAll:visited, a.taomoiAll:active {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<div style="padding : 10px 0;">
+    @using (Html.BeginForm())
+    {
+        //list - style - type:none; margin - bottom:10px; margin - left:250px;
+        <ul style="display:block;text-align:right" class="ul-timkiem">
+            <li>
+                <strong>Loại tour :</strong>
+                @Html.DropDownList("loaitour", null, "", new { @class = "ddtk" })
+            </li>
+            <li>
+                <strong>Loại tìm kiếm :</strong>
+                @Html.DropDownList("droptk", null, "", new { @class = "ddtk" })
+            </li>
+            <li>
+                <p>
+                    @Html.TextBox("SearchString", ViewBag.currentfilter as string, new { placeholder = "Tìm Kiếm" })
+                    <input type="submit" value="Tìm kiếm" class="tkAll"/>
+                </p>
+
+            </li>
+
+        </ul>
+        <style>
+            .tkAll {
+                background-color: #4e92ee;
+                border-radius: 5px;
+                color: #fff;
+                border: 1px solid #4e92ee;
+                padding: 4px 15px;
+            }
+        </style>
+    }
+</div>
+<table class="table" style="margin-top:5px;">
+    <tr>
+        <th>
+            @* @Html.DisplayNameFor(model => model.name)*@
+            @Html.ActionLink("Tên tour", "index", new { sortorder = ViewBag.saptheoten, droptk = ViewBag.currentdroptk, currentfilter = ViewBag.currentfilter, loaitour = ViewBag.currentloaitour })
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.anh)*@
+            Ảnh
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.thoigian)*@
+            Thời gian
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.phuongtien)*@
+            Phương tiện
+        </th>
+        @* <th>
+                @Html.DisplayNameFor(model => model.gia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dacdiem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.chitiet)
+            </th>*@
+        <th>
+            @* @Html.DisplayNameFor(model => model.loai)*@
+            Loại
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.danhmuc)*@
+            Danh mục
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @{ string ImagePath = Common.tourfolder + item.anh; }
+                <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                <br />
+
+                @Html.DisplayFor(modelItem => item.anh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thoigian) ngày
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phuongtien)
+            </td>
+            @* <td>
+                    @Html.DisplayFor(modelItem => item.gia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dacdiem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.chitiet)
+                </td>*@
+            <td>
+                @if (item.loai == 0)
+                {
+                    <span>Tour trong nước</span>
+                }
+                else
+                {
+                    <span>Tour nước ngoài</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tendm)
+            </td>
+            <td style="width:100px;">
+                <ul style="list-style-type:none;">
+                    <li> @Html.ActionLink("Sửa", "Edit", new { id = item.id })</li>
+                    <li> @Html.ActionLink("Xem chi tiết", "Details", new { id = item.id })</li>
+                    <li>@Html.ActionLink("Xóa", "Delete", new { id = item.id })</li>
+                </ul>
+            </td>
+        </tr>
+    }
+
+</table>
+<nav class="post-nav" style="text-align:center;height:60px;">
+    <span style="color:#f40f0f;font-weight:600;font-family:sans-serif;font-size:15px;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    </span>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, sortorder = ViewBag.currentsort, currentfilter = ViewBag.currentfilter, droptk = ViewBag.currentdroptk, loaitour = ViewBag.currentloaitour }))
+</nav>
+<style>
+    .ul-timkiem li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .ddtk {
+        width: 130px;
+    }
+</style>

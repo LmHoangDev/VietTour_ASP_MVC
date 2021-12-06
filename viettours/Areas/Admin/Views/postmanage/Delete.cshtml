@@ -1,0 +1,73 @@
+﻿@model viettours.Models.post
+
+@{
+    ViewBag.Title = "Xóa bài viết";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý bài viết</strong></p>
+}
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.motangan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.motangan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_danhmuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_danhmuc)
+        </dd>
+
+       @* <dt>
+            @Html.DisplayNameFor(model => model.mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>*@
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại", "Index")
+        </div>
+    }
+</div>

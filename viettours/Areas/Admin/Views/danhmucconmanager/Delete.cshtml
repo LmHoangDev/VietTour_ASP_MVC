@@ -1,0 +1,77 @@
+﻿@model viettours.Models.danhmuccon_select_Result
+@using viettours.Models
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý danh mục</strong></p>
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+          @*  @Html.DisplayFor(model => model.type)*@
+            @if (Model.type == 0)
+            {
+                <span>Tour</span>
+            }
+            else if (Model.type == 1)
+            {
+                <span>Post</span>
+            }
+            else
+            {
+                <span>Khác</span>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.danhmuccha)
+        </dt>
+
+        <dd>
+          @*  @Html.DisplayFor(model => model.danhmuccha)*@
+            @{
+                var a = new viettoursDBEntities().danhmucs.SingleOrDefault(x => x.id == Model.danhmuccha);
+                <span>@a.name</span>
+            }
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại", "Index")
+        </div>
+    }
+</div>
+<br />
+@if (ViewBag.error != null)
+{
+    <br />
+    <div class="alert alert-danger">@ViewBag.error</div>
+}

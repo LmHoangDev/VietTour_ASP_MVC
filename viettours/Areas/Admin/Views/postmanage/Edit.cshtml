@@ -1,0 +1,167 @@
+﻿@model viettours.Models.post
+
+@{
+    ViewBag.Title = "Sửa bài viết";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    var ImagePath = Common.postfolder + Model.anh;
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý bài viết</strong></p>
+}
+
+
+@using (Html.BeginForm("Edit", "postmanage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.anh, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="hidden" name="anh" value="@Model.anh" />
+            @*@Html.ValidationMessageFor(model => model.anh, "", new { @class = "text-danger" })*@
+            <img id="output" class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content(@ImagePath)" />
+            <p><label for="ufile" style="cursor:pointer;">Chọn file ảnh</label></p>
+            <input name="ImageFile" id="ufile" type="file" style="display:none;" onchange="loadFile(event)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.loai, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("loai", null, "--chọn--")
+            @Html.ValidationMessageFor(model => model.loai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.motangan, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.motangan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.motangan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.id_danhmuc, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("id_danhmuc", null, "chọn")
+            @Html.ValidationMessageFor(model => model.id_danhmuc, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.mota, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <textarea name="mota" id="motaeditor1">@Html.Raw(Model.mota)</textarea>
+            @Html.ValidationMessageFor(model => model.mota, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Cập nhật" class="btn btn-default" />
+            <span style="margin-left:5px;">
+                 @Html.ActionLink("Trở lại", "Index")
+            </span>
+        </div>
+     
+    </div>
+
+</div>
+}
+
+
+<script src="~/ck5_last/build/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#motaeditor1'), {
+
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'imageUpload',
+                    'blockQuote',
+                    'insertTable',
+                    'mediaEmbed',
+                    'undo',
+                    'redo',
+                    'fontColor',
+                    'fontFamily',
+                    'fontBackgroundColor',
+                    'fontSize'
+                ]
+            },
+            language: 'vi',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:inline',
+                    'imageStyle:block',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+            licenseKey: '',
+
+
+
+        })
+        .then(editor => {
+            window.editor = editor;
+
+
+
+
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            console.warn('Build id: 3kpfd06gjnqw-afhuy3arynul');
+            console.error(error);
+        });</script>
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+<style>
+    .ck-editor__main{
+        max-height:450px;
+        overflow:scroll;
+    }
+</style>
+@*@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+
+}*@

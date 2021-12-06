@@ -1,0 +1,1177 @@
+﻿@using viettours.Models
+@model tour
+
+<link href="~/tab/app.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "DisplayDetailTour";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+    viettoursDBEntities db = new viettoursDBEntities();
+    var gia = db.posts.SingleOrDefault(x => x.id == Model.gia);
+    var chitiet = db.posts.SingleOrDefault(x => x.id == Model.chitiet);
+    var dacdiem = db.posts.SingleOrDefault(x => x.id == Model.dacdiem);
+}
+@section menulink {
+
+    <aside id="bcn_widget-2" class="widget widget_breadcrumb_navxt catalyst-widget-area breadcrum_vt" style="margin-top:10px;">
+        <div class="widget-wrap">
+            <div class="breadcrumbs" vocab="https://schema.org/" typeof="BreadcrumbList">
+                <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Viettours Incentives and Events." href="@Url.Action("TrangChu","Home")" class="home">Trang chủ</a></span> &gt; <span typeof="v:Breadcrumb">
+                    <a rel="v:url" property="v:title" title="Go to Tours." href="@Url.Action("DisplayAllTour","toursss")">Tours</a>
+                </span> &gt; <span typeof="v:Breadcrumb"><span property="v:title">@Model.name</span></span>
+            </div>
+        </div>
+    </aside>
+}
+<aside class="">
+
+    <header class="entry-header" style="margin-top:-20px;">
+        <h1 class="entry-title" style="font-size: 14px;color: #b70606;font-weight: 700;">
+            @Model.name
+        </h1>
+    </header>
+
+    <div class="entry-content">
+        <div class="tour_view_template">
+            <div style="margin-bottom:30px;">
+                <table width="100%" border="0">
+                    <tbody>
+                        <tr>
+                            <td width="80%">
+                                <div class="duration_tour" style=" margin-bottom: 6px;">
+                                    <table width="100%" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="23%"><strong class="tieude-cttour">Thời gian</strong></td>
+                                                <td width="77%">:
+                                                    @{ 
+                                                        int a = (int)Model.thoigian;
+                                                        int b = a - 1;
+                                                    }
+                                                    <span style="font-size:14px;"> @a Ngày - @b Đêm</span> 
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="operates_tour"  style=" margin-bottom: 6px;">
+                                    <table width="100%" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="23%"><strong  class="tieude-cttour">Khởi hành</strong></td>
+                                                <td width="77%">: <span style="font-size:14px;">Vui lòng liên hệ với chúng tôi để biết thêm chi tiết</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="price_tour"  style=" margin-bottom: 6px;">
+                                    <table width="100%" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="23%"><strong class="duration_tour_1 tieude-cttour">Phương tiện</strong></td>
+                                                <td width="77%">: <span style="font-size:14px;"> @Model.phuongtien</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="price_tour" style=" margin-bottom: 6px;">
+                                    <table width="100%" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="23%"><strong class="duration_tour_1 tieude-cttour">Giá</strong></td>
+                                                <td width="77%">: <span style="font-size:14px;">Vui lòng liên hệ với chúng tôi để biết thêm chi tiết</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td valign="top" width="20%">
+                                <div class="booking_tour" align="right"><a href="#t_tour"><img src="~/Content/HomeTestLayout/Images/dat_tour_s.png" width="80" height="31" border="0"></a></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <style>
+
+                /* Style the tab */
+                .tab {
+                    overflow: hidden;
+                    border: 1px solid #ccc;
+                    background-color: #f1f1f1;
+                    padding: 0;
+                    border-radius: 0;
+                    margin: 0 auto 50px auto;
+                }
+
+                    /* Style the buttons inside the tab */
+                    .tab button {
+                        background-color: inherit;
+                        float: left;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        padding: 14px 16px;
+                        transition: 0.3s;
+                        font-size: 14px;
+                    }
+
+                        /* Change background color of buttons on hover */
+                        .tab button:hover {
+                            background-color: #ddd;
+                        }
+
+                        /* Create an active/current tablink class */
+                        .tab button.active {
+                            background-color: #ccc;
+                        }
+
+                /* Style the tab content */
+                .tabcontent {
+                    display: none;
+                    padding: 0px 12px 0 12px;
+                    /* border: 1px solid #ccc; */
+                    
+                    border-top: none;
+                    margin-top: -52px;
+                    background-color: rgb(222 207 207);
+                }
+            </style>
+            <div class="tab">
+                <button class="tablinks" onclick="openCity(event, 'dacdiem')">Đặc điểm</button>
+                <button class="tablinks" onclick="openCity(event, 'chitiet')">Chương trình chi tiết</button>
+                <button class="tablinks" onclick="openCity(event, 'gia')">Giá</button>
+                <button class="tablinks" onclick="openCity(event, 'dattour')">Đặt tour</button>
+            </div>
+            <div id="dacdiem" class="tabcontent" style="background-color: #fff;">
+                @if (dacdiem != null)
+                {
+                    <div class="content-img" style="padding:20px 10px 10px 10px;">@Html.Raw(dacdiem.mota)</div>
+                }
+
+            </div>
+
+            <div id="chitiet" class="tabcontent" style="background-color: #fff;">
+                @if (chitiet != null)
+                {
+                <div class="content-img" style="padding:20px 10px 10px 10px;">@Html.Raw(chitiet.mota)</div>
+                }
+            </div>
+
+            <div id="gia" class="tabcontent" style="background-color: #fff;">
+                @if (gia != null)
+                {
+                    <div class="content-img" style="padding:20px 10px 10px 10px;">@Html.Raw(gia.mota)</div>
+                }
+            </div>
+            <div id="dattour" class="tabcontent" style="background-color: #fff;">
+                <div style="padding-top:20px;">
+                    @using (Ajax.BeginForm("../toursss/dattourabc", null, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }, new { style = "text-align:center;" }))
+                    {
+                        
+                        <table class="form_dattour" cellspacing="2" >
+                            <tr>
+                                <td colspan="2">
+                                    <h2 class="frm_pos_top frm_section_spacing" style="text-align: left; margin-left: 17px;font-weight:600">Thông tin cá nhân</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:145px;">
+                                    <label class="frm_primary_label tieude_dt">
+                                        Họ tên
+                                        <span class="frm_required">*</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="text" id="field_fkbem0" name="ten" value="" data-sectionid="136" style="width:404px" data-reqmsg="This field cannot be blank" aria-required="true" data-invmsg="Họ tên is invalid" class="auto_width" aria-invalid="false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                        <label class="frm_primary_label tieude_dt">
+                                            Email
+                                            <span class="frm_required">*</span>
+                                        </label>
+                                </td>
+                                <td>
+                                    <input type="email" id="field_2btpfb" name="email" value="" data-sectionid="136" style="width:404px" data-reqmsg="This field cannot be blank" aria-required="true" data-invmsg="Email is invalid" class="auto_width" aria-invalid="false">
+                                </td>
+                               
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Điện thoại
+                                        <span class="frm_required">*</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="tel" id="field_w1e6i" name="tel" value="" data-sectionid="136" style="width:180px" data-reqmsg="This field cannot be blank" aria-required="true" data-invmsg="Tel is invalid" class="auto_width" aria-invalid="false" pattern="[0-9]{10,12}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        ĐDDĐ
+                                        <span class="frm_required">*</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="tel" id="field_4y7z6k" name="mobile" value="" data-sectionid="136" style="width:180px" data-reqmsg="This field cannot be blank" aria-required="true" data-invmsg="Mobile is invalid" class="auto_width" aria-invalid="false" pattern="[0-9]{10,12}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Địa chỉ
+                                        <span class="frm_required">*</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="text" id="field_awvdge" name="addr" value="" data-sectionid="136" style="width:404px" data-reqmsg="This field cannot be blank" aria-required="true" data-invmsg="Địa chỉ is invalid" class="auto_width" aria-invalid="false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Country
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <select name="quocgia" id="field_8kpm3r" data-sectionid="136" data-frmval="Vietnam" data-invmsg="Country is invalid" class="auto_width" aria-invalid="false">
+                                        <option value="Vietnam" selected="selected" class="">
+                                            Vietnam
+                                        </option>
+                                        <option value="Afghanistan" class="">
+                                            Afghanistan
+                                        </option>
+                                        <option value="Albania" class="">
+                                            Albania
+                                        </option>
+                                        <option value="Algeria" class="">
+                                            Algeria
+                                        </option>
+                                        <option value="American Samoa" class="">
+                                            American Samoa
+                                        </option>
+                                        <option value="Andorra" class="">
+                                            Andorra
+                                        </option>
+                                        <option value="Angola" class="">
+                                            Angola
+                                        </option>
+                                        <option value="Anguilla" class="">
+                                            Anguilla
+                                        </option>
+                                        <option value="Antarctica" class="">
+                                            Antarctica
+                                        </option>
+                                        <option value="Antigua and Barbuda" class="">
+                                            Antigua and Barbuda
+                                        </option>
+                                        <option value="Argentina" class="">
+                                            Argentina
+                                        </option>
+                                        <option value="Armenia" class="">
+                                            Armenia
+                                        </option>
+                                        <option value="Aruba" class="">
+                                            Aruba
+                                        </option>
+                                        <option value="Australia" class="">
+                                            Australia
+                                        </option>
+                                        <option value="Austria" class="">
+                                            Austria
+                                        </option>
+                                        <option value="Azerbaijan" class="">
+                                            Azerbaijan
+                                        </option>
+                                        <option value="Bahamas" class="">
+                                            Bahamas
+                                        </option>
+                                        <option value="Bahrain" class="">
+                                            Bahrain
+                                        </option>
+                                        <option value="Bangladesh" class="">
+                                            Bangladesh
+                                        </option>
+                                        <option value="Barbados" class="">
+                                            Barbados
+                                        </option>
+                                        <option value="Belarus" class="">
+                                            Belarus
+                                        </option>
+                                        <option value="Belgium" class="">
+                                            Belgium
+                                        </option>
+                                        <option value="Belize" class="">
+                                            Belize
+                                        </option>
+                                        <option value="Benin" class="">
+                                            Benin
+                                        </option>
+                                        <option value="Bermuda" class="">
+                                            Bermuda
+                                        </option>
+                                        <option value="Bhutan" class="">
+                                            Bhutan
+                                        </option>
+                                        <option value="Bolivia" class="">
+                                            Bolivia
+                                        </option>
+                                        <option value="Bosnia and Herzegovina" class="">
+                                            Bosnia and Herzegovina
+                                        </option>
+                                        <option value="Botswana" class="">
+                                            Botswana
+                                        </option>
+                                        <option value="Brazil" class="">
+                                            Brazil
+                                        </option>
+                                        <option value="Brunei" class="">
+                                            Brunei
+                                        </option>
+                                        <option value="Bulgaria" class="">
+                                            Bulgaria
+                                        </option>
+                                        <option value="Burkina Faso" class="">
+                                            Burkina Faso
+                                        </option>
+                                        <option value="Burundi" class="">
+                                            Burundi
+                                        </option>
+                                        <option value="Cambodia" class="">
+                                            Cambodia
+                                        </option>
+                                        <option value="Cameroon" class="">
+                                            Cameroon
+                                        </option>
+                                        <option value="Canada" class="">
+                                            Canada
+                                        </option>
+                                        <option value="Cape Verde" class="">
+                                            Cape Verde
+                                        </option>
+                                        <option value="Cayman Islands" class="">
+                                            Cayman Islands
+                                        </option>
+                                        <option value="Central African Republic" class="">
+                                            Central African Republic
+                                        </option>
+                                        <option value="Chad" class="">
+                                            Chad
+                                        </option>
+                                        <option value="Chile" class="">
+                                            Chile
+                                        </option>
+                                        <option value="China" class="">
+                                            China
+                                        </option>
+                                        <option value="Colombia" class="">
+                                            Colombia
+                                        </option>
+                                        <option value="Comoros" class="">
+                                            Comoros
+                                        </option>
+                                        <option value="Congo" class="">
+                                            Congo
+                                        </option>
+                                        <option value="Costa Rica" class="">
+                                            Costa Rica
+                                        </option>
+                                        <option value="Côte d‘Ivoire" class="">
+                                            Côte d‘Ivoire
+                                        </option>
+                                        <option value="Croatia" class="">
+                                            Croatia
+                                        </option>
+                                        <option value="Cuba" class="">
+                                            Cuba
+                                        </option>
+                                        <option value="Cyprus" class="">
+                                            Cyprus
+                                        </option>
+                                        <option value="Czech Republic" class="">
+                                            Czech Republic
+                                        </option>
+                                        <option value="Denmark" class="">
+                                            Denmark
+                                        </option>
+                                        <option value="Djibouti" class="">
+                                            Djibouti
+                                        </option>
+                                        <option value="Dominica" class="">
+                                            Dominica
+                                        </option>
+                                        <option value="Dominican Republic" class="">
+                                            Dominican Republic
+                                        </option>
+                                        <option value="East Timor" class="">
+                                            East Timor
+                                        </option>
+                                        <option value="Ecuador" class="">
+                                            Ecuador
+                                        </option>
+                                        <option value="Egypt" class="">
+                                            Egypt
+                                        </option>
+                                        <option value="El Salvador" class="">
+                                            El Salvador
+                                        </option>
+                                        <option value="Equatorial Guinea" class="">
+                                            Equatorial Guinea
+                                        </option>
+                                        <option value="Eritrea" class="">
+                                            Eritrea
+                                        </option>
+                                        <option value="Estonia" class="">
+                                            Estonia
+                                        </option>
+                                        <option value="Ethiopia" class="">
+                                            Ethiopia
+                                        </option>
+                                        <option value="Fiji" class="">
+                                            Fiji
+                                        </option>
+                                        <option value="Finland" class="">
+                                            Finland
+                                        </option>
+                                        <option value="France" class="">
+                                            France
+                                        </option>
+                                        <option value="French Guiana" class="">
+                                            French Guiana
+                                        </option>
+                                        <option value="French Polynesia" class="">
+                                            French Polynesia
+                                        </option>
+                                        <option value="Gabon" class="">
+                                            Gabon
+                                        </option>
+                                        <option value="Gambia" class="">
+                                            Gambia
+                                        </option>
+                                        <option value="Georgia" class="">
+                                            Georgia
+                                        </option>
+                                        <option value="Germany" class="">
+                                            Germany
+                                        </option>
+                                        <option value="Ghana" class="">
+                                            Ghana
+                                        </option>
+                                        <option value="Gibraltar" class="">
+                                            Gibraltar
+                                        </option>
+                                        <option value="Greece" class="">
+                                            Greece
+                                        </option>
+                                        <option value="Greenland" class="">
+                                            Greenland
+                                        </option>
+                                        <option value="Grenada" class="">
+                                            Grenada
+                                        </option>
+                                        <option value="Guam" class="">
+                                            Guam
+                                        </option>
+                                        <option value="Guatemala" class="">
+                                            Guatemala
+                                        </option>
+                                        <option value="Guinea" class="">
+                                            Guinea
+                                        </option>
+                                        <option value="Guinea-Bissau" class="">
+                                            Guinea-Bissau
+                                        </option>
+                                        <option value="Guyana" class="">
+                                            Guyana
+                                        </option>
+                                        <option value="Haiti" class="">
+                                            Haiti
+                                        </option>
+                                        <option value="Honduras" class="">
+                                            Honduras
+                                        </option>
+                                        <option value="Hong Kong" class="">
+                                            Hong Kong
+                                        </option>
+                                        <option value="Hungary" class="">
+                                            Hungary
+                                        </option>
+                                        <option value="Iceland" class="">
+                                            Iceland
+                                        </option>
+                                        <option value="India" class="">
+                                            India
+                                        </option>
+                                        <option value="Indonesia" class="">
+                                            Indonesia
+                                        </option>
+                                        <option value="Iran" class="">
+                                            Iran
+                                        </option>
+                                        <option value="Iraq" class="">
+                                            Iraq
+                                        </option>
+                                        <option value="Ireland" class="">
+                                            Ireland
+                                        </option>
+                                        <option value="Israel" class="">
+                                            Israel
+                                        </option>
+                                        <option value="Italy" class="">
+                                            Italy
+                                        </option>
+                                        <option value="Jamaica" class="">
+                                            Jamaica
+                                        </option>
+                                        <option value="Japan" class="">
+                                            Japan
+                                        </option>
+                                        <option value="Jordan" class="">
+                                            Jordan
+                                        </option>
+                                        <option value="Kazakhstan" class="">
+                                            Kazakhstan
+                                        </option>
+                                        <option value="Kenya" class="">
+                                            Kenya
+                                        </option>
+                                        <option value="Kiribati" class="">
+                                            Kiribati
+                                        </option>
+                                        <option value="North Korea" class="">
+                                            North Korea
+                                        </option>
+                                        <option value="South Korea" class="">
+                                            South Korea
+                                        </option>
+                                        <option value="Kuwait" class="">
+                                            Kuwait
+                                        </option>
+                                        <option value="Kyrgyzstan" class="">
+                                            Kyrgyzstan
+                                        </option>
+                                        <option value="Laos" class="">
+                                            Laos
+                                        </option>
+                                        <option value="Latvia" class="">
+                                            Latvia
+                                        </option>
+                                        <option value="Lebanon" class="">
+                                            Lebanon
+                                        </option>
+                                        <option value="Lesotho" class="">
+                                            Lesotho
+                                        </option>
+                                        <option value="Liberia" class="">
+                                            Liberia
+                                        </option>
+                                        <option value="Libya" class="">
+                                            Libya
+                                        </option>
+                                        <option value="Liechtenstein" class="">
+                                            Liechtenstein
+                                        </option>
+                                        <option value="Lithuania" class="">
+                                            Lithuania
+                                        </option>
+                                        <option value="Luxembourg" class="">
+                                            Luxembourg
+                                        </option>
+                                        <option value="Macedonia" class="">
+                                            Macedonia
+                                        </option>
+                                        <option value="Madagascar" class="">
+                                            Madagascar
+                                        </option>
+                                        <option value="Malawi" class="">
+                                            Malawi
+                                        </option>
+                                        <option value="Malaysia" class="">
+                                            Malaysia
+                                        </option>
+                                        <option value="Maldives" class="">
+                                            Maldives
+                                        </option>
+                                        <option value="Mali" class="">
+                                            Mali
+                                        </option>
+                                        <option value="Malta" class="">
+                                            Malta
+                                        </option>
+                                        <option value="Marshall Islands" class="">
+                                            Marshall Islands
+                                        </option>
+                                        <option value="Mauritania" class="">
+                                            Mauritania
+                                        </option>
+                                        <option value="Mauritius" class="">
+                                            Mauritius
+                                        </option>
+                                        <option value="Mexico" class="">
+                                            Mexico
+                                        </option>
+                                        <option value="Micronesia" class="">
+                                            Micronesia
+                                        </option>
+                                        <option value="Moldova" class="">
+                                            Moldova
+                                        </option>
+                                        <option value="Monaco" class="">
+                                            Monaco
+                                        </option>
+                                        <option value="Mongolia" class="">
+                                            Mongolia
+                                        </option>
+                                        <option value="Montenegro" class="">
+                                            Montenegro
+                                        </option>
+                                        <option value="Montserrat" class="">
+                                            Montserrat
+                                        </option>
+                                        <option value="Morocco" class="">
+                                            Morocco
+                                        </option>
+                                        <option value="Mozambique" class="">
+                                            Mozambique
+                                        </option>
+                                        <option value="Myanmar" class="">
+                                            Myanmar
+                                        </option>
+                                        <option value="Namibia" class="">
+                                            Namibia
+                                        </option>
+                                        <option value="Nauru" class="">
+                                            Nauru
+                                        </option>
+                                        <option value="Nepal" class="">
+                                            Nepal
+                                        </option>
+                                        <option value="Netherlands" class="">
+                                            Netherlands
+                                        </option>
+                                        <option value="New Zealand" class="">
+                                            New Zealand
+                                        </option>
+                                        <option value="Nicaragua" class="">
+                                            Nicaragua
+                                        </option>
+                                        <option value="Niger" class="">
+                                            Niger
+                                        </option>
+                                        <option value="Nigeria" class="">
+                                            Nigeria
+                                        </option>
+                                        <option value="Norway" class="">
+                                            Norway
+                                        </option>
+                                        <option value="Northern Mariana Islands" class="">
+                                            Northern Mariana Islands
+                                        </option>
+                                        <option value="Oman" class="">
+                                            Oman
+                                        </option>
+                                        <option value="Pakistan" class="">
+                                            Pakistan
+                                        </option>
+                                        <option value="Palau" class="">
+                                            Palau
+                                        </option>
+                                        <option value="Palestine" class="">
+                                            Palestine
+                                        </option>
+                                        <option value="Panama" class="">
+                                            Panama
+                                        </option>
+                                        <option value="Papua New Guinea" class="">
+                                            Papua New Guinea
+                                        </option>
+                                        <option value="Paraguay" class="">
+                                            Paraguay
+                                        </option>
+                                        <option value="Peru" class="">
+                                            Peru
+                                        </option>
+                                        <option value="Philippines" class="">
+                                            Philippines
+                                        </option>
+                                        <option value="Poland" class="">
+                                            Poland
+                                        </option>
+                                        <option value="Portugal" class="">
+                                            Portugal
+                                        </option>
+                                        <option value="Puerto Rico" class="">
+                                            Puerto Rico
+                                        </option>
+                                        <option value="Qatar" class="">
+                                            Qatar
+                                        </option>
+                                        <option value="Romania" class="">
+                                            Romania
+                                        </option>
+                                        <option value="Russia" class="">
+                                            Russia
+                                        </option>
+                                        <option value="Rwanda" class="">
+                                            Rwanda
+                                        </option>
+                                        <option value="Saint Kitts and Nevis" class="">
+                                            Saint Kitts and Nevis
+                                        </option>
+                                        <option value="Saint Lucia" class="">
+                                            Saint Lucia
+                                        </option>
+                                        <option value="Saint Vincent and the Grenadines" class="">
+                                            Saint Vincent and the Grenadines
+                                        </option>
+                                        <option value="Samoa" class="">
+                                            Samoa
+                                        </option>
+                                        <option value="San Marino" class="">
+                                            San Marino
+                                        </option>
+                                        <option value="Sao Tome and Principe" class="">
+                                            Sao Tome and Principe
+                                        </option>
+                                        <option value="Saudi Arabia" class="">
+                                            Saudi Arabia
+                                        </option>
+                                        <option value="Senegal" class="">
+                                            Senegal
+                                        </option>
+                                        <option value="Serbia and Montenegro" class="">
+                                            Serbia and Montenegro
+                                        </option>
+                                        <option value="Seychelles" class="">
+                                            Seychelles
+                                        </option>
+                                        <option value="Sierra Leone" class="">
+                                            Sierra Leone
+                                        </option>
+                                        <option value="Singapore" class="">
+                                            Singapore
+                                        </option>
+                                        <option value="Slovakia" class="">
+                                            Slovakia
+                                        </option>
+                                        <option value="Slovenia" class="">
+                                            Slovenia
+                                        </option>
+                                        <option value="Solomon Islands" class="">
+                                            Solomon Islands
+                                        </option>
+                                        <option value="Somalia" class="">
+                                            Somalia
+                                        </option>
+                                        <option value="South Africa" class="">
+                                            South Africa
+                                        </option>
+                                        <option value="Spain" class="">
+                                            Spain
+                                        </option>
+                                        <option value="Sri Lanka" class="">
+                                            Sri Lanka
+                                        </option>
+                                        <option value="Sudan" class="">
+                                            Sudan
+                                        </option>
+                                        <option value="Suriname" class="">
+                                            Suriname
+                                        </option>
+                                        <option value="Swaziland" class="">
+                                            Swaziland
+                                        </option>
+                                        <option value="Sweden" class="">
+                                            Sweden
+                                        </option>
+                                        <option value="Switzerland" class="">
+                                            Switzerland
+                                        </option>
+                                        <option value="Syria" class="">
+                                            Syria
+                                        </option>
+                                        <option value="Taiwan" class="">
+                                            Taiwan
+                                        </option>
+                                        <option value="Tajikistan" class="">
+                                            Tajikistan
+                                        </option>
+                                        <option value="Tanzania" class="">
+                                            Tanzania
+                                        </option>
+                                        <option value="Thailand" class="">
+                                            Thailand
+                                        </option>
+                                        <option value="Togo" class="">
+                                            Togo
+                                        </option>
+                                        <option value="Tonga" class="">
+                                            Tonga
+                                        </option>
+                                        <option value="Trinidad and Tobago" class="">
+                                            Trinidad and Tobago
+                                        </option>
+                                        <option value="Tunisia" class="">
+                                            Tunisia
+                                        </option>
+                                        <option value="Turkey" class="">
+                                            Turkey
+                                        </option>
+                                        <option value="Turkmenistan" class="">
+                                            Turkmenistan
+                                        </option>
+                                        <option value="Tuvalu" class="">
+                                            Tuvalu
+                                        </option>
+                                        <option value="Uganda" class="">
+                                            Uganda
+                                        </option>
+                                        <option value="Ukraine" class="">
+                                            Ukraine
+                                        </option>
+                                        <option value="United Arab Emirates" class="">
+                                            United Arab Emirates
+                                        </option>
+                                        <option value="United Kingdom" class="">
+                                            United Kingdom
+                                        </option>
+                                        <option value="United States" class="">
+                                            United States
+                                        </option>
+                                        <option value="Uruguay" class="">
+                                            Uruguay
+                                        </option>
+                                        <option value="Uzbekistan" class="">
+                                            Uzbekistan
+                                        </option>
+                                        <option value="Vanuatu" class="">
+                                            Vanuatu
+                                        </option>
+                                        <option value="Vatican City" class="">
+                                            Vatican City
+                                        </option>
+                                        <option value="Venezuela" class="">
+                                            Venezuela
+                                        </option>
+                                        <option value="Virgin Islands, British" class="">
+                                            Virgin Islands, British
+                                        </option>
+                                        <option value="Virgin Islands, U.S." class="">
+                                            Virgin Islands, U.S.
+                                        </option>
+                                        <option value="Yemen" class="">
+                                            Yemen
+                                        </option>
+                                        <option value="Zambia" class="">
+                                            Zambia
+                                        </option>
+                                        <option value="Zimbabwe" class="">
+                                            Zimbabwe
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h2 class="frm_pos_top frm_section_spacing" style="text-align: left; margin-left: 17px;font-weight:600">Thông tin đặt dịch vụ *</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt" style="margin-left: 17px; font-size: 14px;">
+                                        Tên tour
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="tentour" value="@Model.name" style="width:404px;float:right;clear:both" class="auto_width" aria-invalid="false" readonly>
+                                    <input type="hidden" name="tour_id" value="@Model.id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Ngày khởi hành
+                                        <span class="frm_required">*</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="date" id="field_tnsibd" name="start" value="" data-sectionid="137" style="width:180px" data-reqmsg="This field cannot be blank" aria-required="true" data-invmsg="Date is invalid" class="frm_date auto_width" aria-invalid="false">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Số người đi tour
+                                        <span class="frm_required">*</span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="number" id="field_xw1uri" name="songuoi" value="" data-sectionid="137" style="width:45px" data-reqmsg="This field cannot be blank" aria-required="true" data-invmsg="Number of persons is invalid" class="auto_width" aria-invalid="false" min="0" max="9999999" step="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h2 class="frm_pos_left frm_section_spacing" style="text-align: left; margin-left: 17px;font-weight:600">Yêu cầu khác</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Người lớn
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="number" id="field_2ajdoi" name="nguoilon" value="" data-sectionid="142" style="width:45px" data-invmsg="Adults is invalid" class="auto_width" aria-invalid="false" min="0" max="9999999" step="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Trẻ em dưới 2 tuổi
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="number" id="field_mfkyrj" name="treem_2" value="" data-sectionid="142" style="width:45px" data-invmsg="Children: under 6 is invalid" class="auto_width" aria-invalid="false" min="0" max="9999999" step="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Trẻ em dưới 12 tuổi
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="number" id="field_uc3f9z" name="treem_12" value="" data-sectionid="142" style="width:45px" data-invmsg="under 12 is invalid" class="auto_width" aria-invalid="false" min="0" max="9999999" step="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Loại phòng
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <select name="loaipid" id="field_zim8z7" data-sectionid="142" data-frmval="---- Chọn ----" data-invmsg="Loại phòng is invalid" class="auto_width" aria-invalid="false">
+                                        <option value="---- Chọn ----" selected="selected" class="">
+                                            ---- Chọn ----
+                                        </option>
+                                        <option value="Phòng cao cấp" class="">
+                                            Phòng cao cấp
+                                        </option>
+                                        <option value="Phòng trung bình" class="">
+                                            Phòng trung bình
+                                        </option>
+                                        <option value="Phòng giá rẻ" class="">
+                                            Phòng giá rẻ
+                                        </option>
+                                    </select>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h2 class="frm_pos_top frm_section_spacing" style="text-align: left; margin-left: 17px;font-weight:600">Thông tin số phòng</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Phòng đơn
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="number" id="field_tfxw24" name="phong1" value="" data-sectionid="148" style="width:45px" data-invmsg="Single is invalid" class="auto_width" aria-invalid="false" min="0" max="9999999" step="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Phòng đôi
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="number" id="field_gch7bq" name="phong2" value="" data-sectionid="148" style="width:45px" data-invmsg="Double is invalid" class="auto_width" aria-invalid="false" min="0" max="9999999" step="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Phòng ba
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <input type="number" id="field_gvb85k" name="phong3" value="" data-sectionid="148" style="width:45px" data-invmsg="Triple is invalid" class="auto_width" aria-invalid="false" min="0" max="9999999" step="1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Hướng dẫn
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <select name="huongdan_id" id="field_dislfv" data-sectionid="148" data-frmval="---- Chọn ----" data-invmsg="Hướng dẫn is invalid" class="auto_width" aria-invalid="false">
+                                        <option value="---- Chọn ----" selected="selected" class="">
+                                            ---- Chọn ----
+                                        </option>
+                                        <option value="Tiếng Anh" class="">
+                                            Tiếng Anh
+                                        </option>
+                                        <option value="Tiếng Pháp" class="">
+                                            Tiếng Pháp
+                                        </option>
+                                        <option value="Tiếng Đức" class="">
+                                            Tiếng Đức
+                                        </option>
+                                        <option value="Tiếng Nhật" class="">
+                                            Tiếng Nhật
+                                        </option>
+                                        <option value="Tiếng khác..." class="">
+                                            Tiếng khác...
+                                        </option>
+                                    </select>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="frm_primary_label tieude_dt">
+                                        Thông tin khác
+                                        <span class="frm_required"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <textarea name="item_meta[154]" rows="5" data-sectionid="148" style="width: 400px; border: 1px solid #eae7e7;" cols="50" class="auto_width" aria-invalid="false"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div style="text-align: left; padding-bottom: 14px; margin-left: 17px;">
+                                        <button class="frm_button_submit frm_final_submit btnDatTour" type="submit">Đặt tour</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+            </div>
+            <script>
+                function openCity(evt, cityName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+                    document.getElementById(cityName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                }
+            </script>
+        </div>
+        <div style="clear:both;"></div>
+
+    </div>
+    <footer class="post-meta"><p></p></footer>
+</aside>
+
+<script src="~/tab/final.js"></script>
+<style>
+    .tab-wrapper button.btnDatTour {
+        width: 70px;
+        height: 23px;
+        border: 1px solid #eee;
+        background-color: #2D9DA7;
+        color: #fff;
+        border-radius: 12%;
+    }
+
+    span.frm_required {
+        color: red;
+    }
+
+    .tab-wrapper input {
+        background-color: #f4f3f3;
+        border: 1px solid #eae7e7;
+        max-width: 404px;
+        overflow: hidden;
+    }
+
+    .tab-wrapper select {
+        border: 1px solid #eae7e7;
+    }
+
+    .tab-wrapper {
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .post-title label {
+        text-align: left;
+    }
+    .tieude-cttour {
+        font-size:14px;
+    }
+    .frm_form_field.form-field.frm_required_field.frm_left_container {
+        display: flex;
+        justify-content: space-between;
+        padding:5px 0;
+    }
+    .frm_form_field.form-field {
+        padding:5px 0;
+    }
+    .frm_primary_label {
+        text-align: left;
+        margin-left: 17px;
+    }
+    .frm_pos_left.frm_section_spacing {
+        text-align: left;
+        margin-left: 17px;
+    }
+    .frm_primary_label.tieude_dt {
+        font-size:14px;
+        margin-left:17px;
+        text-align:left;
+    }
+    
+    .dattour-title {
+        display: flex !important;
+        justify-content: space-between !important;
+        padding:2px 0;
+    }
+    #dattour input, #dattour select,#dattour textarea {
+        border: none;
+        background-color: #EEEEEE;
+    }
+    #form0 .form_dattour  td {
+        text-align: left;
+        border: 5px !important;
+    }
+    table.form_dattour{
+        border: 5px solid white;
+    }
+    table.form_dattour tr{
+        border: 5px solid white;
+    }
+        table.form_dattour tr td {
+            border: 5px solid white;
+        }
+        .tabcontent .content-img img{
+            width:100%;
+        }
+</style>

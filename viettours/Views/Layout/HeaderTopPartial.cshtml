@@ -1,0 +1,200 @@
+﻿@using viettours.Models
+
+<div class="header-container">
+    <div>
+        <div>
+            <div>
+                <div style="position:relative;">
+                    <a href="#" title="logo viettours">
+                        <img src="@Url.Content("~/Content/HomeTestLayout/Images/logo_viettours.png")" width="164" height="100">
+                    </a>
+                    <span style="position: absolute; right: 6px; top: 7px;">
+                        <a href="#"><img src="@Url.Content("~/Content/HomeTestLayout/Images/vn.png")" width="18" height="12" border="0"></a>
+                        <a href="#"><img src="@Url.Content("~/Content/HomeTestLayout/Images/gb.png")" width="18" height="12" border="0"></a>
+                    </span>
+                    <div style="position: absolute;right: 0; top: 35px;">
+
+                        <div>
+                            <a href="@Url.Action("Index","dattours")" class="history-tour" style=" font-size: 15px; color: #2e56f3; font-weight: 600; text-align: right; float: right; padding-bottom: 8px; margin-right: 4px; display: block;text-decoration: none;">
+                                <img src="~/Content/Images/1922282.png" style="width:25px;height:25px;" /> <span>Lịch sử đặt tours</span>
+                            </a><br />
+                            <div style="font-size: 19px; color: #2b8d95; font-style: italic; text-align: right;"><img src="@Url.Content("~/Content/HomeTestLayout/Images/hotline.png")" alt="hotline" width="219" height="30"></div>
+
+                        </div>
+
+                        <style>
+                            .main-login {
+                            }
+
+                            ._login {
+                                font-size: 14px;
+                                text-transform: uppercase;
+                                display: inline-block;
+                                font-weight: 600;
+                                position: unset;
+                            }
+                        </style>
+                    </div>
+                    <div class="main-login-k" style="position: absolute; right: 55px; top: 9px; ">
+                        <div>
+
+                            <div class="_login">
+                                @if (Session["account"] != null && Session["account"].ToString() != "")
+                                {
+                                    account tk = (account)Session["account"];
+                                    @*<span style="color:red;">Hi @tk.username</span>*@
+                                    <span class="i-user_login">
+                                        @Html.ActionLink("Hi " + tk.username, "../KhachHangQLTaiKhoan/Index", null, new { style = "text-transform:uppercase;color:red;" })
+
+                                        @*@Html.RouteLink("Đăng xuất","~/Home/dangxuat", new { style = "font-weight:600;text-align:center;margin-left: 6px;" })*@
+                                        @Html.ActionLink("Đãng xuất", "dangxuat", "Home", null, new { style = "font-weight:600;text-align:center;margin-left: 6px;" })
+                                    </span>
+
+                                }
+                                else
+                                {
+                                    <span>
+                                        <a class="_login-item" href="#" id="btnDangNhap">Đăng nhập</a>
+                                        <span style="color:#ccc">|</span>
+                                        <a class="_login-item dk" href="@Url.Action("DangKy","Home")">Đăng ký</a>
+                                    </span>
+
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div>
+    <div id="popup_login">
+        <div class="den"></div>
+        <div class="form-group" style="height:550px;margin-top:81px;">
+            <div class="login-form" style="margin: 0 auto; background: #505698 !important; ">
+                <div style="text-align:right;margin-bottom:0;position:absolute;top:20px;right:20px;font-size:25px">
+                    <span id="close-form" class="btn btn-danger" style="display: block;padding: 10px 21px;color: #fff;background: #e92d2d;font-family: sans-serif;margin-right:18px;border-radius:10px;">X</span>
+                </div>
+                <h2 style="text-align: center; font-size: 60px; font-family: cursive; padding-bottom: 21px; margin-top: -18px; } ">Đăng nhập</h2>
+                <div class="form-info">
+                    @using (Ajax.BeginForm("../home/dangnhap", null, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }, new { @class = "LoginForm", style = "text-align:center;" }))
+                    {
+
+                        <input type="text" class="email" id="txtTenDangNhap" name="txtTenDangNhap" placeholder="Tên đăng nhập" pattern="[a-zA-Z0-9]+" style="width: 89%;font-size: 30px;padding: 0 0 0 31px;background-color:#f1f1f1;color:black;" oldautocomplete="remove" autocomplete="off">
+                        <input type="password" class="password" id="txtMatKhau" name="txtMatKhau" placeholder="Mật khẩu" required="" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,30}" style="width: 89%; font-size: 30px; padding: 0 0 0 31px; background-color: #f1f1f1; color: black;" />
+                        <p><a href="#" style="margin-right: 31px; color: #f1f1f1; font-size: 20px;">Quên mật khẩu ?</a></p>
+                        <h3 style="font-weight:600;color:#f1f1f1;" id="ThongBao">@* Đăng nhập thất bại*@</h3>
+                        <ul class="login-buttons">
+                            <li> <input type="submit" id="SUBMIT" name="SUBMIT" value="Đăng nhập" style="margin-right: -7px; height: 65px; margin-top: 3px; width: 237px; font-size: 25px;" /></li>
+
+                            <li>
+                                <a href="@Url.Action("DangKy","Home")" style="text-decoration: none;height: 68px; margin-left: -12px; padding-left: 60px; padding-right: 60px; text-align: center; margin-top: 3px; padding-top: 14px; margin-right: 10px; font-size: 25px;" class="hvr-sweep-to-left">
+                                    Đăng ký
+                                </a>
+                            </li>
+                            @*// <li class="clear"> </li>*@
+                        </ul>
+                        @*<script>
+                                $(".form-info").ready(function() {
+                                    $.validator.addMethod("txtTenDangNhap", function(value, element) {
+                                        return this.optional(element) || /[a-zA-Z0-9]+$/i.test(value);
+                                    }, "Tên đăng nhập không tồn tại");
+
+                                    $.validator.addMethod("txtMatKhau",function(value,element){
+                                        return this.optional(element) || /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,30}$/i.test(value);
+                                    },"Passwords are 8-16 characters with uppercase letters, lowercase letters and at least one number.");
+                                    $.validator.addMethod("SUBMIT", function (value, element) {
+                                        return this.optional(element) || /[^ ]/i.test(value);
+                                    }, "You did not click the submit button.");
+
+                                    // Validate signup form on keyup and submit
+                                    $(".LoginForm").validate({
+                                        rules: {
+                                            txtTenDangNhap: "required Ten Dang Nhap",
+                                            txtMatKhau: "required PASSWORD",
+                                            SUBMIT: "required SUBMIT",
+                                        },
+                                    });
+
+                                });
+                            </script>*@
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .close-form{
+        display:block;
+        padding:10px 10px;
+        background-color:#ee6868;
+        color:white;
+        border-radius:10px;
+    }
+    .search-edit {
+        width:30%;
+        height:1.8em;
+    }
+    .form-search-fix {
+        width: 100%;
+    }
+    .copyrights {
+        @*width:100%;*@
+    }
+    #popup_login {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(244 244 244 / 50%);
+        z-index: 10;
+        display: none;
+    }
+    .den {
+        width:100%;
+        height:100%;
+        z-index:11;
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    .form-group {
+        width:600px;
+        height:460px;
+        margin: 0 auto;
+        z-index:9999;
+        position:absolute;
+        left:30%;
+    }
+    .history-tour:hover{
+        color:#f33e3e !important;
+    }
+</style>
+<link href="~/Content/style_Login.css" rel="stylesheet" type="text/css" />
+<!-- Su dung Jquery-->
+<script type="text/javascript">
+
+    // hien thi
+    $("#btnDangNhap").click(function () {
+       @* $("#popup_login").css("display", "block");*@
+        @*$("#popup_login").show();*@
+        @* $("#popup_login").fadeIn(500);*@
+        $("#popup_login").slideDown();
+    })
+    // An di
+    $("#close-form").click(function () {
+        $("#popup_login").hide(500);
+    })
+    $(".den").click(function () {
+        $("#popup_login").hide(500);
+    })
+
+
+</script>

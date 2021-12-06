@@ -1,0 +1,82 @@
+﻿@model viettours.Models.account
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý tài khoản</strong></p>
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.username)*@ 
+            Tên đăng nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <!--<dt>-->
+            @*@Html.DisplayNameFor(model => model.pass)*@ 
+            <!--Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pass)
+        </dd>-->
+
+        <dt>
+           @* @Html.DisplayNameFor(model => model.email)*@ 
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+          @*  @Html.DisplayNameFor(model => model.diachi)*@ 
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diachi)
+        </dd>
+
+        <dt>
+           @* @Html.DisplayNameFor(model => model.quyenhan)*@
+            Quyền hạn
+        </dt>
+
+        <dd>
+           @* @Html.DisplayFor(model => model.quyenhan)*@
+
+            @{
+                var quyenhan = "";
+            }
+            @* @Html.DisplayFor(modelItem => item.gioitinh)*@
+            @if (Model.quyenhan == 2)
+            {
+                quyenhan = "Khách hàng";
+                <span>@quyenhan</span>
+            }
+            else
+            {
+                quyenhan = "Admin";
+                <span>@quyenhan</span>
+            }
+
+
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Model.quyenhan != 2)
+    {<span>@Html.ActionLink("Sửa", "Edit", new { id = Model.id }) |</span>}
+
+    @Html.ActionLink("Trở lại", "Index")
+</p>

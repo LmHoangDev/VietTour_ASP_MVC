@@ -1,0 +1,4 @@
+﻿Rebuild started...
+1>------ Rebuild All started: Project: viettours, Configuration: Debug Any CPU ------
+1>  viettours -> E:\GitHub\websitedulich\viettours\bin\viettours.dll
+========== Rebuild All: 1 succeeded, 0 failed, 0 skipped ==========

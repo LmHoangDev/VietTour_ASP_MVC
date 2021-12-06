@@ -1,0 +1,56 @@
+﻿@using viettours.Models
+@model post
+@{
+    ViewBag.Title = "DisplayDetailPost";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+    viettoursDBEntities db = new viettoursDBEntities();
+    var lstPost = db.posts.Where(n => n.loai==1).Take(4).ToList();
+}
+
+@section menulink {
+    <aside id="bcn_widget-2" class="widget widget_breadcrumb_navxt catalyst-widget-area breadcrum_vt" style="margin-top:10px;">
+        <div class="widget-wrap">
+            <div class="breadcrumbs" vocab="https://schema.org/" typeof="BreadcrumbList">
+                <span typeof="v:Breadcrumb">
+                    <a rel="v:url" property="v:title" title="Go to Viettours Incentives and Events." href="@Url.Action("TrangChu","Home")" class="home">Trang chủ</a>
+                </span> &gt; <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to the Tin du lịch category archives." href="@Url.Action("DisplayAllPost","postss")" class="taxonomy category">Tin du lịch</a></span> &gt; <span typeof="v:Breadcrumb">
+                    <span property="v:title">@Model.title</span>
+                </span>
+            </div>
+        </div>
+    </aside>
+
+}
+<aside style="box-sizing:border-box;overflow:hidden;">
+
+    <header class="entry-header" style="margin-top:-20px;">
+        <h1 class="entry-title" style="font-size: 15px;font-weight: 700;color: #bb0a0a;">@Model.title</h1>
+
+    </header>
+
+    <div class="entry-content postchitiet">
+        <div class="at-above-post addthis_tool" data-url="#"></div>
+        <p>
+            @Html.Raw(Model.mota)
+        </p>
+        <h2 id="related-posts-via-taxonomies-title" style="font-size:14px;">Các bài viết khác</h2>
+        <ul id="related-posts-via-taxonomies-list">
+            @foreach (var item in lstPost)
+            {
+                <li>
+                    <a href="@Url.Action("DisplayDetailPost","postss",new {id=item.id,title=item.title })" title="@item.title">@item.title</a>
+                </li>
+            }
+        </ul>
+        <div style="clear:both;"></div>
+    </div>
+    <footer class="post-meta"><p></p></footer>
+</aside>
+<style>
+    .entry-content.postchitiet img{
+        width:100%;
+    }
+</style>
+
+
+

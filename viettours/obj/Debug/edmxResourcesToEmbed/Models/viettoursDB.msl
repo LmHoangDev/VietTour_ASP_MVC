@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="viettoursDBModelStoreContainer" CdmEntityContainer="viettoursDBEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="viettoursDBModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="quyenhan" ColumnName="quyenhan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="danhmucs">
+      <EntityTypeMapping TypeName="viettoursDBModel.danhmuc">
+        <MappingFragment StoreEntitySet="danhmuc">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="danhmuccons">
+      <EntityTypeMapping TypeName="viettoursDBModel.danhmuccon">
+        <MappingFragment StoreEntitySet="danhmuccon">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="danhmuccha" ColumnName="danhmuccha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="huongdans">
+      <EntityTypeMapping TypeName="viettoursDBModel.huongdan">
+        <MappingFragment StoreEntitySet="huongdan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ngonngu" ColumnName="ngonngu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lienhes">
+      <EntityTypeMapping TypeName="viettoursDBModel.lienhe">
+        <MappingFragment StoreEntitySet="lienhe">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+          <ScalarProperty Name="quocgia" ColumnName="quocgia" />
+          <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+          <ScalarProperty Name="diachi" ColumnName="diachi" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="noidung" ColumnName="noidung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loaiphongs">
+      <EntityTypeMapping TypeName="viettoursDBModel.loaiphong">
+        <MappingFragment StoreEntitySet="loaiphong">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="posts">
+      <EntityTypeMapping TypeName="viettoursDBModel.post">
+        <MappingFragment StoreEntitySet="post">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="loai" ColumnName="loai" />
+          <ScalarProperty Name="motangan" ColumnName="motangan" />
+          <ScalarProperty Name="id_danhmuc" ColumnName="id_danhmuc" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tours">
+      <EntityTypeMapping TypeName="viettoursDBModel.tour">
+        <MappingFragment StoreEntitySet="tour">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+          <ScalarProperty Name="khoihanh" ColumnName="khoihanh" />
+          <ScalarProperty Name="phuongtien" ColumnName="phuongtien" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="dacdiem" ColumnName="dacdiem" />
+          <ScalarProperty Name="chitiet" ColumnName="chitiet" />
+          <ScalarProperty Name="loai" ColumnName="loai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tourNNs">
+      <EntityTypeMapping TypeName="viettoursDBModel.tourNN">
+        <MappingFragment StoreEntitySet="tourNN">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_danhmuc2" ColumnName="id_danhmuc2" />
+          <ScalarProperty Name="id_danhmuc1" ColumnName="id_danhmuc1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tourTNs">
+      <EntityTypeMapping TypeName="viettoursDBModel.tourTN">
+        <MappingFragment StoreEntitySet="tourTN">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_danhmuc" ColumnName="id_danhmuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="danhmuc_delete" FunctionName="viettoursDBModel.Store.danhmuc_delete" />
+    <FunctionImportMapping FunctionImportName="danhmuc_loai" FunctionName="viettoursDBModel.Store.danhmuc_loai">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="viettoursDBModel.danhmuc_loai_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="danhmuc_select" FunctionName="viettoursDBModel.Store.danhmuc_select" />
+    <FunctionImportMapping FunctionImportName="danhmuc_update" FunctionName="viettoursDBModel.Store.danhmuc_update" />
+    <FunctionImportMapping FunctionImportName="danhmuccon_select_all" FunctionName="viettoursDBModel.Store.danhmuccon_select_all">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="viettoursDBModel.danhmuccon_select_all_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="loaidm" ColumnName="loaidm" />
+          <ScalarProperty Name="danhmuccha" ColumnName="danhmuccha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tour_delete" FunctionName="viettoursDBModel.Store.tour_delete" />
+    <FunctionImportMapping FunctionImportName="tour_insert" FunctionName="viettoursDBModel.Store.tour_insert" />
+    <FunctionImportMapping FunctionImportName="tour_manage" FunctionName="viettoursDBModel.Store.tour_manage">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="viettoursDBModel.tour_manage_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+          <ScalarProperty Name="khoihanh" ColumnName="khoihanh" />
+          <ScalarProperty Name="phuongtien" ColumnName="phuongtien" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="dacdiem" ColumnName="dacdiem" />
+          <ScalarProperty Name="chitiet" ColumnName="chitiet" />
+          <ScalarProperty Name="loai" ColumnName="loai" />
+          <ScalarProperty Name="danhmuc" ColumnName="danhmuc" />
+          <ScalarProperty Name="tendm" ColumnName="tendm" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="tour_select" FunctionName="viettoursDBModel.Store.tour_select" />
+    <FunctionImportMapping FunctionImportName="tour_update" FunctionName="viettoursDBModel.Store.tour_update" />
+    <FunctionImportMapping FunctionImportName="danhmuccha_select" FunctionName="viettoursDBModel.Store.danhmuccha_select" />
+    <FunctionImportMapping FunctionImportName="danhmuccon_select" FunctionName="viettoursDBModel.Store.danhmuccon_select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="viettoursDBModel.danhmuccon_select_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="danhmuccha" ColumnName="danhmuccha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="danhmuc_insert" FunctionName="viettoursDBModel.Store.danhmuc_insert" />
+    <EntitySetMapping Name="dattours">
+      <EntityTypeMapping TypeName="viettoursDBModel.dattour">
+        <MappingFragment StoreEntitySet="dattour">
+          <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+          <ScalarProperty Name="huongdan_id" ColumnName="huongdan_id" />
+          <ScalarProperty Name="phong3" ColumnName="phong3" />
+          <ScalarProperty Name="phong2" ColumnName="phong2" />
+          <ScalarProperty Name="phong1" ColumnName="phong1" />
+          <ScalarProperty Name="loaipid" ColumnName="loaipid" />
+          <ScalarProperty Name="treem_12" ColumnName="treem_12" />
+          <ScalarProperty Name="treem_2" ColumnName="treem_2" />
+          <ScalarProperty Name="nguoilon" ColumnName="nguoilon" />
+          <ScalarProperty Name="songuoi" ColumnName="songuoi" />
+          <ScalarProperty Name="start" ColumnName="start" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="quocgia" ColumnName="quocgia" />
+          <ScalarProperty Name="addr" ColumnName="addr" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

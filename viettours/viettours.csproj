@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C2ADDFD-FB82-413B-8344-FCBACB26EBC0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>viettours</RootNamespace>
+    <AssemblyName>viettours</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44329</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\accountsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\danhmucconmanagerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\danhmucsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\dattoursmanagerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\lienhesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\postmanageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\profileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\tourmanagerController.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Controllers\cdmController.cs" />
+    <Compile Include="Controllers\dattoursController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangQLTaiKhoanController.cs" />
+    <Compile Include="Controllers\postssController.cs" />
+    <Compile Include="Controllers\toursssController.cs" />
+    <Compile Include="Custom_Helpers\Custom_Helper_Class.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\account.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\danhmuc.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\danhmuccha_select_Result.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\danhmuccon.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\danhmuccon_select_all_Result.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\danhmuccon_select_Result.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\danhmuc_loai_Result.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\danhmuc_select_Result.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dattour.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\huongdan.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\lienhe.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\loaiphong.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\post.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tour.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tourNN.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tourTN.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tour_manage_Result.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tour_select_Result.cs">
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\viettoursDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>viettoursDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\viettoursDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>viettoursDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\viettoursDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>viettoursDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Js\main.js" />
+    <Content Include="ck5_last\build\ckeditor.js" />
+    <Content Include="ck5_last\build\translations\af.js" />
+    <Content Include="ck5_last\build\translations\ar.js" />
+    <Content Include="ck5_last\build\translations\ast.js" />
+    <Content Include="ck5_last\build\translations\az.js" />
+    <Content Include="ck5_last\build\translations\bg.js" />
+    <Content Include="ck5_last\build\translations\ca.js" />
+    <Content Include="ck5_last\build\translations\cs.js" />
+    <Content Include="ck5_last\build\translations\da.js" />
+    <Content Include="ck5_last\build\translations\de-ch.js" />
+    <Content Include="ck5_last\build\translations\de.js" />
+    <Content Include="ck5_last\build\translations\el.js" />
+    <Content Include="ck5_last\build\translations\en-au.js" />
+    <Content Include="ck5_last\build\translations\en-gb.js" />
+    <Content Include="ck5_last\build\translations\en.js" />
+    <Content Include="ck5_last\build\translations\eo.js" />
+    <Content Include="ck5_last\build\translations\es.js" />
+    <Content Include="ck5_last\build\translations\et.js" />
+    <Content Include="ck5_last\build\translations\eu.js" />
+    <Content Include="ck5_last\build\translations\fa.js" />
+    <Content Include="ck5_last\build\translations\fi.js" />
+    <Content Include="ck5_last\build\translations\fr.js" />
+    <Content Include="ck5_last\build\translations\gl.js" />
+    <Content Include="ck5_last\build\translations\gu.js" />
+    <Content Include="ck5_last\build\translations\he.js" />
+    <Content Include="ck5_last\build\translations\hi.js" />
+    <Content Include="ck5_last\build\translations\hr.js" />
+    <Content Include="ck5_last\build\translations\hu.js" />
+    <Content Include="ck5_last\build\translations\id.js" />
+    <Content Include="ck5_last\build\translations\it.js" />
+    <Content Include="ck5_last\build\translations\ja.js" />
+    <Content Include="ck5_last\build\translations\km.js" />
+    <Content Include="ck5_last\build\translations\kn.js" />
+    <Content Include="ck5_last\build\translations\ko.js" />
+    <Content Include="ck5_last\build\translations\ku.js" />
+    <Content Include="ck5_last\build\translations\lt.js" />
+    <Content Include="ck5_last\build\translations\lv.js" />
+    <Content Include="ck5_last\build\translations\nb.js" />
+    <Content Include="ck5_last\build\translations\ne.js" />
+    <Content Include="ck5_last\build\translations\nl.js" />
+    <Content Include="ck5_last\build\translations\no.js" />
+    <Content Include="ck5_last\build\translations\oc.js" />
+    <Content Include="ck5_last\build\translations\pl.js" />
+    <Content Include="ck5_last\build\translations\pt-br.js" />
+    <Content Include="ck5_last\build\translations\pt.js" />
+    <Content Include="ck5_last\build\translations\ro.js" />
+    <Content Include="ck5_last\build\translations\ru.js" />
+    <Content Include="ck5_last\build\translations\si.js" />
+    <Content Include="ck5_last\build\translations\sk.js" />
+    <Content Include="ck5_last\build\translations\sl.js" />
+    <Content Include="ck5_last\build\translations\sq.js" />
+    <Content Include="ck5_last\build\translations\sr-latn.js" />
+    <Content Include="ck5_last\build\translations\sr.js" />
+    <Content Include="ck5_last\build\translations\sv.js" />
+    <Content Include="ck5_last\build\translations\th.js" />
+    <Content Include="ck5_last\build\translations\tk.js" />
+    <Content Include="ck5_last\build\translations\tr.js" />
+    <Content Include="ck5_last\build\translations\tt.js" />
+    <Content Include="ck5_last\build\translations\ug.js" />
+    <Content Include="ck5_last\build\translations\uk.js" />
+    <Content Include="ck5_last\build\translations\zh-cn.js" />
+    <Content Include="ck5_last\build\translations\zh.js" />
+    <Content Include="ck5_last\sample\index.html" />
+    <Content Include="ck5_last\sample\styles.css" />
+    <Content Include="ck5_last\src\ckeditor.js" />
+    <Content Include="ck5_last\webpack.config.js" />
+    <Content Include="Content\AdminLayout\css\bootstrap.css" />
+    <Content Include="Content\AdminLayout\css\clndr.css" />
+    <Content Include="Content\AdminLayout\css\font-awesome.css" />
+    <Content Include="Content\AdminLayout\css\jqvmap.css" />
+    <Content Include="Content\AdminLayout\css\nav.css" />
+    <Content Include="Content\AdminLayout\css\style.css" />
+    <Content Include="Content\AdminLayout\images\ar2.png" />
+    <Content Include="Content\AdminLayout\images\arrows.png" />
+    <Content Include="Content\AdminLayout\images\avatar.jpg" />
+    <Content Include="Content\AdminLayout\images\avatar1.jpg" />
+    <Content Include="Content\AdminLayout\images\avatar2.jpg" />
+    <Content Include="Content\AdminLayout\images\haui-removebg-preview.png" />
+    <Content Include="Content\AdminLayout\images\img-sprite.png" />
+    <Content Include="Content\AdminLayout\images\into.png" />
+    <Content Include="Content\AdminLayout\images\into1.png" />
+    <Content Include="Content\AdminLayout\images\logo.png" />
+    <Content Include="Content\AdminLayout\images\logo_viettours %281%29.png" />
+    <Content Include="Content\AdminLayout\images\pp.jpg" />
+    <Content Include="Content\AdminLayout\images\pp0.jpg" />
+    <Content Include="Content\AdminLayout\images\pp01.jpg" />
+    <Content Include="Content\AdminLayout\images\settings.png" />
+    <Content Include="Content\AdminLayout\images\tick-mark.png" />
+    <Content Include="Content\AdminLayout\js\Chart1.js" />
+    <Content Include="Content\AdminLayout\js\clndr.js" />
+    <Content Include="Content\AdminLayout\js\easyResponsiveTabs.js" />
+    <Content Include="Content\AdminLayout\js\jquery.easydropdown.js" />
+    <Content Include="Content\AdminLayout\js\jquery.min.js" />
+    <Content Include="Content\AdminLayout\js\jquery.nicescroll.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.sampledata.js" />
+    <Content Include="Content\AdminLayout\js\jquery.vmap.world.js" />
+    <Content Include="Content\AdminLayout\js\main.js" />
+    <Content Include="Content\AdminLayout\js\moment-2.2.1.js" />
+    <Content Include="Content\AdminLayout\js\site.js" />
+    <Content Include="Content\AdminLayout\js\underscore-min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\css.css" />
+    <Content Include="Content\css\dynamik-min.css" />
+    <Content Include="Content\css\formidableforms.css" />
+    <Content Include="Content\css\layerslider.css" />
+    <Content Include="Content\HomeTestLayout\Images\bg-body-viettour.jpg" />
+    <Content Include="Content\HomeTestLayout\Images\bg-wrap-viettour.png" />
+    <Content Include="Content\HomeTestLayout\Images\bg_content_sidebar.png" />
+    <Content Include="Content\HomeTestLayout\Images\bg_content_sidebar_canbiet.png" />
+    <Content Include="Content\HomeTestLayout\Images\bg_content_sidebar_httt.png" />
+    <Content Include="Content\HomeTestLayout\Images\bg_sidebar_search.png" />
+    <Content Include="Content\HomeTestLayout\Images\chatbutton_20px.png" />
+    <Content Include="Content\HomeTestLayout\Images\dat_tour_s.png" />
+    <Content Include="Content\HomeTestLayout\Images\gb.png" />
+    <Content Include="Content\HomeTestLayout\Images\grab.png" />
+    <Content Include="Content\HomeTestLayout\Images\hotline.png" />
+    <Content Include="Content\HomeTestLayout\Images\le-hoi-quoc-te1.jpg" />
+    <Content Include="Content\HomeTestLayout\Images\le-hoi-viet-nam1.jpg" />
+    <Content Include="Content\HomeTestLayout\Images\logo_doitac_thanhvien.png" />
+    <Content Include="Content\HomeTestLayout\Images\logo_viettours.png" />
+    <Content Include="Content\HomeTestLayout\Images\navi1.png" />
+    <Content Include="Content\HomeTestLayout\Images\slide-viettour-1.jpg" />
+    <Content Include="Content\HomeTestLayout\Images\slide-viettour-2.jpg" />
+    <Content Include="Content\HomeTestLayout\Images\slide-viettour.jpg" />
+    <Content Include="Content\HomeTestLayout\Images\sprite.png" />
+    <Content Include="Content\HomeTestLayout\Images\title_tintucsukien.png" />
+    <Content Include="Content\HomeTestLayout\Images\title_tourmoi.png" />
+    <Content Include="Content\HomeTestLayout\Images\vn.png" />
+    <Content Include="Content\HomeTestLayout\index.css" />
+    <Content Include="Content\HomeTestLayout\index.js" />
+    <Content Include="Content\Images\0-cu_lao_2-130x130.jpeg" />
+    <Content Include="Content\Images\1-2-130x130.jpeg" />
+    <Content Include="Content\Images\159604862_2910385905911358_2037814310697851768_n.jpg" />
+    <Content Include="Content\Images\170606121305-new-zealand-travel-destination-shutterstock-180140354-130x130.jpg" />
+    <Content Include="Content\Images\180531144547-03-moscow-attractions-st-basils-cathedral-full-169-130x130.jpg" />
+    <Content Include="Content\Images\1922282.png" />
+    <Content Include="Content\Images\233_chua_vinh_trang-130x130.jpeg" />
+    <Content Include="Content\Images\23c5204f1b36e068b927-130x130.jpeg" />
+    <Content Include="Content\Images\3-days-in-Budapest-55-1024x683-130x130.jpg" />
+    <Content Include="Content\Images\38276670-130x130.jpeg" />
+    <Content Include="Content\Images\4_5_11-130x130.jpeg" />
+    <Content Include="Content\Images\5-1-130x130.jpg" />
+    <Content Include="Content\Images\5a-130x130.jpg" />
+    <Content Include="Content\Images\admin-menu-editor-banner.png" />
+    <Content Include="Content\Images\background-dangky.jpg" />
+    <Content Include="Content\Images\bai-dam-trau-5f64864100bc6-130x130.jpeg" />
+    <Content Include="Content\Images\bando-visa.jpg" />
+    <Content Include="Content\Images\bg-body-viettour.jpg" />
+    <Content Include="Content\Images\bg-wrap-viettour.png" />
+    <Content Include="Content\Images\bg_content_sidebar.png" />
+    <Content Include="Content\Images\bg_content_sidebar_canbiet.png" />
+    <Content Include="Content\Images\bg_content_sidebar_httt.png" />
+    <Content Include="Content\Images\bg_sidebar_search.png" />
+    <Content Include="Content\Images\big-ben-130x130.jpg" />
+    <Content Include="Content\Images\camnhi-191721021703-lang-chai-rach-vem-130x130.jpeg" />
+    <Content Include="Content\Images\CauDiBo-CanTho1-130x130.jpeg" />
+    <Content Include="Content\Images\chatbutton_20px.png" />
+    <Content Include="Content\Images\chonoiphongdien5_637018266650409481-130x130.jpeg" />
+    <Content Include="Content\Images\Christ-the-Redeemer-980x613-130x130.jpg" />
+    <Content Include="Content\Images\chuavinhtrang1-1-130x130.jpeg" />
+    <Content Include="Content\Images\con-dao-130x130.jpeg" />
+    <Content Include="Content\Images\dat_tour_s.png" />
+    <Content Include="Content\Images\DJI_0186-scaled-1-130x130.jpeg" />
+    <Content Include="Content\Images\don-ca-tai-tu-2-130x130.jpeg" />
+    <Content Include="Content\Images\Dubai-Wallpaper-1-130x130.jpg" />
+    <Content Include="Content\Images\gb.png" />
+    <Content Include="Content\Images\giai-thuong-1.jpg" />
+    <Content Include="Content\Images\giai-thuong-2.jpg" />
+    <Content Include="Content\Images\giai-thuong-3.jpg" />
+    <Content Include="Content\Images\home_bg-e1545224300256-130x130.jpg" />
+    <Content Include="Content\Images\hotline.png" />
+    <Content Include="Content\Images\Hội-An-1-130x130.jpg" />
+    <Content Include="Content\Images\image-130x130.jpg" />
+    <Content Include="Content\Images\Istanbul-lead-xlarge-130x130.jpg" />
+    <Content Include="Content\Images\istanbul-nigth-turkey-shutterstock_250783048-130x130.jpg" />
+    <Content Include="Content\Images\keukenhof-1-130x130.jpg" />
+    <Content Include="Content\Images\Khach-san-cao-cap-o-Phu-quoc-tang-truong-nhanh-130x130.jpeg" />
+    <Content Include="Content\Images\kham-pha-vuong-quoc-sao-bien-phu-quoc-lang-chai-rach-vem-1-130x130.jpeg" />
+    <Content Include="Content\Images\las-vegas-getty-130x130.jpeg" />
+    <Content Include="Content\Images\le-hoi-quoc-te1.jpg" />
+    <Content Include="Content\Images\le-hoi-viet-nam1.jpg" />
+    <Content Include="Content\Images\line_bg_navi1.png" />
+    <Content Include="Content\Images\logo_doitac_thanhvien.png" />
+    <Content Include="Content\Images\logo_viettours.png" />
+    <Content Include="Content\Images\madagui-130x130.jpeg" />
+    <Content Include="Content\Images\maxresdefault-130x130.jpg" />
+    <Content Include="Content\Images\navi1.png" />
+    <Content Include="Content\Images\new-zealand-3-130x130.jpg" />
+    <Content Include="Content\Images\northern-lights-2560x1700-aurora-borealis-iceland-polar-regions-4781-130x130.jpg" />
+    <Content Include="Content\Images\Núi-Thần-Tài-Đà-Nẵng-130x130.jpg" />
+    <Content Include="Content\Images\photo-1503192851959-c6da8ac80cff-130x130.jpeg" />
+    <Content Include="Content\Images\quan-dao-nam-du-130x130.jpeg" />
+    <Content Include="Content\Images\Sensoji-Tokyo-Japan-130x130.jpg" />
+    <Content Include="Content\Images\sights_in_hokkaido_sapporo-130x130.jpg" />
+    <Content Include="Content\Images\silversea-european-cruises-st-petersburg-russian-federation-130x130.jpg" />
+    <Content Include="Content\Images\slide-viettour %281%29.jpg" />
+    <Content Include="Content\Images\slide-viettour-1 %281%29.jpg" />
+    <Content Include="Content\Images\slide-viettour-1.jpg" />
+    <Content Include="Content\Images\slide-viettour-2.jpg" />
+    <Content Include="Content\Images\slide-viettour.jpg" />
+    <Content Include="Content\Images\switzerland-bern-city-view-130x130.jpg" />
+    <Content Include="Content\Images\sydney-opera-house-wallpapers-28915-4527296-130x130.jpg" />
+    <Content Include="Content\Images\thap-truyen-hinh-dong-phuong-minh-trung-quoc-2-130x130.jpg" />
+    <Content Include="Content\Images\thien-vien-truc-lam-1-130x130.jpg" />
+    <Content Include="Content\Images\thung-lung-vang-130x130.jpg" />
+    <Content Include="Content\Images\title_tintucsukien.png" />
+    <Content Include="Content\Images\title_tourmoi.png" />
+    <Content Include="Content\Images\up.png" />
+    <Content Include="Content\Images\vn.png" />
+    <Content Include="Content\Images\VnExpress-1583844481-1593672182-130x130.jpeg" />
+    <Content Include="Content\Images\VNO-Best-Time-To-Visit-Vung-Tau1-130x130.jpeg" />
+    <Content Include="Content\LoginAdmin\1.css" />
+    <Content Include="Content\LoginAdmin\1.js" />
+    <Content Include="Content\LoginAdmin\logo_viettours.png" />
+    <Content Include="Content\LoginAdmin\vendor\bootstrap.css" />
+    <Content Include="Content\LoginAdmin\vendor\bootstrap.js" />
+    <Content Include="Content\LoginAdmin\vendor\font-awesome.css" />
+    <Content Include="Content\LoginAdmin\vendor\tether.min.js" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Post\post1.jpg" />
+    <Content Include="Content\Post\post10.jpg" />
+    <Content Include="Content\Post\post2.jpg" />
+    <Content Include="Content\Post\post3.jpg" />
+    <Content Include="Content\Post\post4.jpg" />
+    <Content Include="Content\Post\post5.jpg" />
+    <Content Include="Content\Post\post6.jpg" />
+    <Content Include="Content\Post\post7.jpg" />
+    <Content Include="Content\Post\post8.jpg" />
+    <Content Include="Content\Post\post9.jpg" />
+    <Content Include="Content\style_Login.css" />
+    <Content Include="Content\TouchCarousel\img\controls.png" />
+    <Content Include="Content\TouchCarousel\lightslider.css" />
+    <Content Include="Content\TouchCarousel\lightslider.js" />
+    <Content Include="Content\Tour\tour1.jpg" />
+    <Content Include="Content\Tour\tour10.jpg" />
+    <Content Include="Content\Tour\tour11.jpg" />
+    <Content Include="Content\Tour\tour12.jpg" />
+    <Content Include="Content\Tour\tour13.jpg" />
+    <Content Include="Content\Tour\tour14.jpg" />
+    <Content Include="Content\Tour\tour15.jpg" />
+    <Content Include="Content\Tour\tour16.jpg" />
+    <Content Include="Content\Tour\tour17.jpg" />
+    <Content Include="Content\Tour\tour18.jpg" />
+    <Content Include="Content\Tour\tour2.jpg" />
+    <Content Include="Content\Tour\tour3.jpg" />
+    <Content Include="Content\Tour\tour4.jpg" />
+    <Content Include="Content\Tour\tour5.jpg" />
+    <Content Include="Content\Tour\tour6.jpg" />
+    <Content Include="Content\Tour\tour7.jpg" />
+    <Content Include="Content\Tour\tour8.jpg" />
+    <Content Include="Content\Tour\tour9.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\viettoursDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>viettoursDB.edmx</DependentUpon>
+      <LastGenOutput>viettoursDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\viettoursDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>viettoursDB.edmx</DependentUpon>
+      <LastGenOutput>viettoursDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\lienhes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\lienhes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\accounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\accounts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\accounts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\accounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\accounts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\tourmanager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\tourmanager\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\tourmanager\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\tourmanager\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\tourmanager\Index.cshtml" />
+    <Content Include="Areas\Admin\Layout\Layout_LoginAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\lienhes\Index.cshtml" />
+    <Content Include="ck5_last\build\ckeditor.js.map" />
+    <Content Include="ck5_last\LICENSE.md" />
+    <Content Include="ck5_last\package.json" />
+    <Content Include="ck5_last\README.md" />
+    <EntityDeploy Include="Models\viettoursDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>viettoursDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\viettoursDB.edmx.diagram">
+      <DependentUpon>viettoursDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\postmanage\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\postmanage\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\postmanage\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\postmanage\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\postmanage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucconmanager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucconmanager\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucconmanager\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucconmanager\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\danhmucconmanager\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\dattoursmanager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\dattoursmanager\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\dattoursmanager\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\dattoursmanager\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\dattoursmanager\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\profile\DoiMatKhauAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\profile\Index.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Layout\AdminLayout.cshtml" />
+    <Content Include="Views\Layout\DangKyLayout.cshtml" />
+    <Content Include="Views\Layout\FooterPartial.cshtml" />
+    <Content Include="Views\Layout\GiaiThuong.cshtml" />
+    <Content Include="Views\Layout\HomeLayout.cshtml" />
+    <Content Include="Views\Layout\LoginAdmin.cshtml" />
+    <Content Include="Views\Layout\Sidebar_1_Partial.cshtml" />
+    <Content Include="Views\Layout\Sidebar_2_Partial.cshtml" />
+    <Content Include="Views\Layout\AdminLayout.cshtml" />
+    <Content Include="Views\Layout\HeaderTopPartial.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Layout\MenuPartial.cshtml" />
+    <Content Include="Views\Layout\MenuTestPartial.cshtml" />
+    <Content Include="Views\Home\ThemLienHe.cshtml" />
+    <Content Include="Views\Home\XeVanChuyen.cshtml" />
+    <Content Include="Views\Home\ChinhSachBaoMat.cshtml" />
+    <Content Include="Views\Home\DieuKienChung.cshtml" />
+    <Content Include="Views\Home\DuLichMoiTruong.cshtml" />
+    <Content Include="Views\Home\TrangChu.cshtml" />
+    <Content Include="Views\Home\ThuTucVisa.cshtml" />
+    <Content Include="Views\KhachHangQLTaiKhoan\QLTaiKhoan.cshtml" />
+    <Content Include="Views\KhachHangQLTaiKhoan\Index.cshtml" />
+    <Content Include="Views\postss\DisplayAllPost.cshtml" />
+    <Content Include="Views\postss\DisplayDetailPost.cshtml" />
+    <Content Include="Views\toursss\DisplayAllTour.cshtml" />
+    <Content Include="Views\toursss\DisplayDetailTour.cshtml" />
+    <Content Include="Views\toursss\Index.cshtml" />
+    <Content Include="Views\postss\Index.cshtml" />
+    <Content Include="Views\Home\chondanhmuc.cshtml" />
+    <Content Include="Views\Layout\MenuAdminPartial.cshtml" />
+    <Content Include="Views\toursss\View.cshtml" />
+    <Content Include="Views\Layout\HomeTestLayout.cshtml" />
+    <Content Include="Views\toursss\dattourabc.cshtml" />
+    <Content Include="Views\postss\displaypostbydm.cshtml" />
+    <Content Include="Views\Home\motadm.cshtml" />
+    <Content Include="Views\cdm\Index.cshtml" />
+    <Content Include="Views\dattours\Create.cshtml" />
+    <Content Include="Views\dattours\Delete.cshtml" />
+    <Content Include="Views\dattours\Details.cshtml" />
+    <Content Include="Views\dattours\Edit.cshtml" />
+    <Content Include="Views\dattours\Index.cshtml" />
+    <Content Include="Views\toursss\search.cshtml" />
+    <Content Include="Views\KhachHangQLTaiKhoan\DoiMatKhauUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\QuanLyTaiKhoan\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49484</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44329/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
+    <ItemGroup>
+      <RoslynFiles Include="$(CscToolPath)\*" />
+    </ItemGroup>
+    <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
+    <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
+  </Target>
+</Project>

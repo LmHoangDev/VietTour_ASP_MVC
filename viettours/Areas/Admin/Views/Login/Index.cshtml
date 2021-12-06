@@ -1,0 +1,49 @@
+﻿
+@model viettours.Models.account
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Layout/Layout_LoginAdmin.cshtml";
+}
+
+<div class="img-login">
+    <img href="#" src="~/Content/LoginAdmin/logo_viettours.png" alt="" />
+</div>
+@using (Html.BeginForm("Login2", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>Tên đăng nhập</label>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", } })
+            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger " })
+        </div>
+
+        @* <input type="text" name="txtTenDangNhap" class="form-control" placeholder="Email" pattern="[a-zA-Z0-9]+" />*@
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Mật khẩu</label>
+        <div class="col-md-12">
+            @Html.PasswordFor(model => model.pass, new { @class = "form-control", })<br />
+            @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger " })
+            @*<input type="password" name="txtMatKhau" class="form-control" id="exampleInputPassword1" placeholder="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,30}" />*@
+        </div>
+    </div>
+    <div class="form-check acess">
+        <div class="_cottrai" style="position:relative;">
+            @Html.CheckBox("Tudonglogin", new { style = "width:20px;height:20px; top: 11px;left: -16px;position: absolute; " }) <span>Tự động đăng nhập</span>
+            @* <input type="checkbox" class="form-check-input cbox" id="exampleCheck1" name="tudonglogin"/>*@
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+    </div>
+    <h3 style="font-weight:600;color:#f1f1f1;" id="ThongBao"></h3>
+}
+<h2 style="font-size:15px;color:red;text-align:center;">@ViewBag.error</h2>
+<div class="footer">
+    <a href="#">Bạn quên mật khẩu?</a><br />
+    <a href="../../Home/TrangChu">← Quay lại Viettours Incentives and Events</a>
+</div>
+
+<p>@ViewBag.Error</p>
+

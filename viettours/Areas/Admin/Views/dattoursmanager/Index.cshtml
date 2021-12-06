@@ -1,0 +1,88 @@
+﻿@using viettours.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<dattour>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    var db = new viettoursDBEntities();
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý đặt tour</strong></p>
+}
+@*<h2 style="text-align:center;color:#fc2b2b;font-weight:600;margin-bottom:20px;">Danh sách đặt tour</h2>*@
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table" border="0">
+    <tr>
+        <th>
+            @* @Html.DisplayNameFor(model => model.ten)*@
+            Tên Khách hàng
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.tour.name)*@
+            Tên tour
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+           @* @Html.DisplayNameFor(model => model.start)*@ 
+            Ngày khởi hành
+
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.loaipid)*@
+            Loại phòng
+        </th>
+        <th>
+            Hướng dẫn
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ten)
+            </td>
+            <td>
+                @{
+                    var tour = db.tours.Single(x => x.id == item.tour_id);
+                }
+                @Html.DisplayFor(modelItem => tour.name)
+            </td>
+            <td>
+                <img src="@Url.Content(Common.tourfolder + tour.anh)" style="width:70px;height:80px;" />
+            </td>
+            <td>
+                <span>@item.start.ToString("MM/dd/yyyy")</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loaipid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.huongdan_id)
+            </td>
+            <td>
+
+                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.id }) | 
+                @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+
+            </td>
+        </tr>
+    }
+
+</table>
+<style>
+    td {
+        border: none;
+    }
+</style>
+<nav class="post-nav" style="text-align:center;height:60px;">
+    <span style="color:#f40f0f;font-weight:600;font-family:sans-serif;;font-size:15px;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    </span>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</nav>

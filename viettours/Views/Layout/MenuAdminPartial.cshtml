@@ -1,0 +1,68 @@
+﻿@using viettours
+@using viettours.Models
+
+<div style="min-height:1000px;">
+    <div class="logo text-center">
+        <a href="#"><img src="~/Content/AdminLayout/images/logo_viettours (1).png" alt="" /></a>
+    </div>
+    <div class="navigation">
+        <a href="~/Admin/Home/Index" style="display:block;text-decoration:none;"><h3 style="font-size:20px;text-transform:uppercase;text-align:center;padding-left:0">menu quản trị</h3></a>
+        @{
+            var a = (account)Session["admin"];
+        }
+        @if (a.quyenhan == 0)
+        {
+            <ul>
+                <li><a href="@Url.Action("Index","../Admin/accounts")"><i class="fa fa-user-o menu-icon"></i>  Quản lý tài khoản</a></li>
+            </ul>
+        }
+        <ul>
+            <li>
+                <a href="@Url.Action("Index","../Admin/tourmanager")"><i class="fa fa-plane menu-icon"></i>  Quản lý tours</a>
+                @*<ul class="submenu">
+                    <li><a href="#">Tour trong nước</a></li>
+                    <li><a href="#">Tour nước ngoài</a></li>
+                </ul>*@
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-bars menu-icon"></i>  Quản lý danh mục</a>
+                <ul class="submenu">
+                    <li><a href="@Url.Action("Index","../Admin/danhmucs")">Danh mục cha</a></li>
+                    <li><a href="@Url.Action("Index","../Admin/danhmucconmanager")">Danh mục con</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="@Url.Action("Index","../Admin/postmanage")"><i class="fa fa-file-text menu-icon"></i>  Quản lý bài viết</a></li>
+        </ul>
+        <ul>
+            <li><a href="@Url.Action("Index","../Admin/dattoursmanager")"><i class="fa fa-first-order menu-icon"></i>  Quản lý đặt tours</a></li>
+        </ul>
+        <ul>
+            <li><a href="@Url.Action("Index","../Admin/lienhes")"><i class="fa fa-phone menu-icon"></i>  Quản lý liên hệ</a></li>
+        </ul>
+
+    </div>
+    <style>
+        i.menu-icon {
+            padding-left: 32px !important;
+        }
+
+        .navigation ul li a {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .navigation .submenu li a {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</div>
+

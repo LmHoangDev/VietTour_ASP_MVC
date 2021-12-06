@@ -1,0 +1,85 @@
+﻿@model viettours.Models.account
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Layout/DangKyLayout.cshtml";
+    @* Model.quyenhan = 2;*@
+
+    int? quyenhan = 2;
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal form-loginAdmin">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="img-login">
+        <img href="#" src="~/Content/LoginAdmin/logo_viettours.png" alt="" />
+    </div>
+    <h1 class="tieude">Đăng ký thành viên</h1>
+    <div class="form-group" style="position:relative;">
+        @* @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <span class="tieude-dk col-md-2">Tên đăng nhập</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })<br />
+            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger", style = "position: absolute;font-size: 13px;color: red;bottom:-17px;right:50px" })
+        </div>
+    </div>
+    <div class="form-group" style="position:relative;">
+        @* @Html.LabelFor(model => model.pass, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <span class="tieude-dk col-md-2">Nhập mật khẩu</span>
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.pass, new { htmlAttributes = new { @class = "form-control" } })<br />
+            @Html.ValidationMessageFor(model => model.pass, "", new { @class = "text-danger", style = "position: absolute;font-size: 13px;color: red;bottom:-17px;right:50px" })
+        </div>
+    </div>
+    <div class="form-group" style="position:relative;">
+        @* @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <span class="tieude-dk col-md-2">Địa chỉ email</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })<br />
+            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger", style = "position: absolute;font-size: 13px;color: red;bottom:-17px;right:50px" })
+        </div>
+    </div>
+
+    <div class="form-group" style="position:relative;">
+        @*  @Html.LabelFor(model => model.diachi, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <span class="tieude-dk col-md-2">Địa chỉ </span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })<br />
+            @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger", style = "position: absolute;font-size: 13px;color: red;bottom:-17px;right:50px" })
+        </div>
+    </div>
+
+    <div class="form-group" style="display:none;visibility:hidden;">
+
+        @Html.LabelFor(model => model.quyenhan, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => quyenhan, new { htmlAttributes = new { @class = "form-control" } })<br />
+            @Html.ValidationMessageFor(model => model.quyenhan, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Đăng ký" class="btn btn-success" style="padding: 14px 33px;background:#1346c3;color: #fff;border: 1px solid #fff;border-radius: 5%;margin-top: 20px;">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12" style="margin:0 auto;color:#f96630">
+            @if (ViewBag.error != null)
+            {
+                <span>@ViewBag.error</span>
+            }
+        </div>
+    </div>
+</div>
+
+}
+<div class="dangky-trolai">
+    @Html.ActionLink("Cancel", "TrangChu")
+</div>

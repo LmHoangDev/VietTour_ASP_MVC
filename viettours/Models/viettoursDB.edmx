@@ -1,0 +1,948 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="viettoursDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="30" />
+          <Property Name="pass" Type="varchar" MaxLength="30" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" />
+          <Property Name="quyenhan" Type="int" />
+        </EntityType>
+        <EntityType Name="danhmuc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+          <Property Name="mota" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="danhmuccon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="type" Type="int" />
+          <Property Name="danhmuccha" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="dattour">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tel" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="mobile" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="addr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="quocgia" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="tour_id" Type="int" Nullable="false" />
+          <Property Name="start" Type="date" Nullable="false" />
+          <Property Name="songuoi" Type="int" Nullable="false" />
+          <Property Name="nguoilon" Type="int" />
+          <Property Name="treem_2" Type="int" />
+          <Property Name="treem_12" Type="int" />
+          <Property Name="loaipid" Type="nvarchar" MaxLength="50" />
+          <Property Name="phong1" Type="int" />
+          <Property Name="phong2" Type="int" />
+          <Property Name="phong3" Type="int" />
+          <Property Name="huongdan_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="acc_id" Type="int" />
+        </EntityType>
+        <EntityType Name="huongdan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ngonngu" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="lienhe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="gioitinh" Type="int" Nullable="false" />
+          <Property Name="quocgia" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="dienthoai" Type="decimal" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="noidung" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loaiphong">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="tenloai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="anh" Type="nvarchar" MaxLength="60" />
+          <Property Name="loai" Type="int" />
+          <Property Name="motangan" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_danhmuc" Type="varchar" MaxLength="10" />
+          <Property Name="mota" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tour">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="anh" Type="nvarchar" MaxLength="60" />
+          <Property Name="thoigian" Type="int" />
+          <Property Name="khoihanh" Type="nvarchar" MaxLength="50" />
+          <Property Name="phuongtien" Type="nvarchar" MaxLength="50" />
+          <Property Name="gia" Type="int" />
+          <Property Name="dacdiem" Type="int" />
+          <Property Name="chitiet" Type="int" />
+          <Property Name="loai" Type="int" />
+        </EntityType>
+        <EntityType Name="tourNN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_danhmuc2" Type="varchar" MaxLength="10" />
+          <Property Name="id_danhmuc1" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tourTN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_danhmuc" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__danhmuccon__id__267ABA7A">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="1" />
+          <End Role="danhmuccon" Type="Self.danhmuccon" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="danhmuccon">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dattour__acc_id__70DDC3D8">
+          <End Role="account" Type="Self.account" Multiplicity="0..1" />
+          <End Role="dattour" Type="Self.dattour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dattour">
+              <PropertyRef Name="acc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dattour__tour_id__6FE99F9F">
+          <End Role="tour" Type="Self.tour" Multiplicity="1" />
+          <End Role="dattour" Type="Self.dattour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dattour">
+              <PropertyRef Name="tour_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourNN__id__2F10007B">
+          <End Role="tour" Type="Self.tour" Multiplicity="1" />
+          <End Role="tourNN" Type="Self.tourNN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourNN">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourNN__id_danhm__300424B4">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="0..1" />
+          <End Role="tourNN" Type="Self.tourNN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourNN">
+              <PropertyRef Name="id_danhmuc2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourNN__id_danhm__30F848ED">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="0..1" />
+          <End Role="tourNN" Type="Self.tourNN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourNN">
+              <PropertyRef Name="id_danhmuc1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourTN__id__2B3F6F97">
+          <End Role="tour" Type="Self.tour" Multiplicity="1" />
+          <End Role="tourTN" Type="Self.tourTN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourTN">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourTN__id_danhm__2C3393D0">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="0..1" />
+          <End Role="tourTN" Type="Self.tourTN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourTN">
+              <PropertyRef Name="id_danhmuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="danhmuc_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="danhmuc_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="mota" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+          <Parameter Name="danhmuccha" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="danhmuc_loai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="loai" Type="int" Mode="In" />
+        </Function>
+        <Function Name="danhmuc_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="loai" Type="int" Mode="In" />
+        </Function>
+        <Function Name="danhmuc_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="mota" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="int" Mode="In" />
+          <Parameter Name="danhmuccha" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="danhmuccha_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="danhmuccon_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="danhmuccon_select_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tour_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="loai" Type="int" Mode="In" />
+        </Function>
+        <Function Name="tour_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="anh" Type="nvarchar" Mode="In" />
+          <Parameter Name="thoigian" Type="int" Mode="In" />
+          <Parameter Name="khoihanh" Type="nvarchar" Mode="In" />
+          <Parameter Name="phuongtien" Type="nvarchar" Mode="In" />
+          <Parameter Name="gia" Type="int" Mode="In" />
+          <Parameter Name="dacdiem" Type="int" Mode="In" />
+          <Parameter Name="chitiet" Type="int" Mode="In" />
+          <Parameter Name="loai" Type="int" Mode="In" />
+          <Parameter Name="danhmuc1" Type="varchar" Mode="In" />
+          <Parameter Name="danhmuc2" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="tour_manage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="tour_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="loai" Type="int" Mode="In" />
+          <Parameter Name="id_danhmuc" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="tour_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="anh" Type="nvarchar" Mode="In" />
+          <Parameter Name="thoigian" Type="int" Mode="In" />
+          <Parameter Name="khoihanh" Type="nvarchar" Mode="In" />
+          <Parameter Name="phuongtien" Type="nvarchar" Mode="In" />
+          <Parameter Name="gia" Type="int" Mode="In" />
+          <Parameter Name="dacdiem" Type="int" Mode="In" />
+          <Parameter Name="chitiet" Type="int" Mode="In" />
+          <Parameter Name="loai" Type="int" Mode="In" />
+          <Parameter Name="danhmuc1" Type="varchar" Mode="In" />
+          <Parameter Name="danhmuc2" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="viettoursDBModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="danhmuc" EntityType="Self.danhmuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="danhmuccon" EntityType="Self.danhmuccon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dattour" EntityType="Self.dattour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="huongdan" EntityType="Self.huongdan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lienhe" EntityType="Self.lienhe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaiphong" EntityType="Self.loaiphong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour" EntityType="Self.tour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tourNN" EntityType="Self.tourNN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tourTN" EntityType="Self.tourTN" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__danhmuccon__id__267ABA7A" Association="Self.FK__danhmuccon__id__267ABA7A">
+            <End Role="danhmuc" EntitySet="danhmuc" />
+            <End Role="danhmuccon" EntitySet="danhmuccon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dattour__acc_id__70DDC3D8" Association="Self.FK__dattour__acc_id__70DDC3D8">
+            <End Role="account" EntitySet="account" />
+            <End Role="dattour" EntitySet="dattour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dattour__tour_id__6FE99F9F" Association="Self.FK__dattour__tour_id__6FE99F9F">
+            <End Role="tour" EntitySet="tour" />
+            <End Role="dattour" EntitySet="dattour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourNN__id__2F10007B" Association="Self.FK__tourNN__id__2F10007B">
+            <End Role="tour" EntitySet="tour" />
+            <End Role="tourNN" EntitySet="tourNN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourNN__id_danhm__300424B4" Association="Self.FK__tourNN__id_danhm__300424B4">
+            <End Role="danhmuc" EntitySet="danhmuc" />
+            <End Role="tourNN" EntitySet="tourNN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourNN__id_danhm__30F848ED" Association="Self.FK__tourNN__id_danhm__30F848ED">
+            <End Role="danhmuc" EntitySet="danhmuc" />
+            <End Role="tourNN" EntitySet="tourNN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourTN__id__2B3F6F97" Association="Self.FK__tourTN__id__2B3F6F97">
+            <End Role="tour" EntitySet="tour" />
+            <End Role="tourTN" EntitySet="tourTN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourTN__id_danhm__2C3393D0" Association="Self.FK__tourTN__id_danhm__2C3393D0">
+            <End Role="danhmuc" EntitySet="danhmuc" />
+            <End Role="tourTN" EntitySet="tourTN" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="viettoursDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="quyenhan" Type="Int32" />
+          <NavigationProperty Name="dattours" Relationship="viettoursDBModel.FK__dattour__acc_id__70DDC3D8" FromRole="account" ToRole="dattour" />
+        </EntityType>
+        <EntityType Name="danhmuc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="danhmuccon" Relationship="Self.FK__danhmuccon__id__267ABA7A" FromRole="danhmuc" ToRole="danhmuccon" />
+          <NavigationProperty Name="tourNNs" Relationship="Self.FK__tourNN__id_danhm__300424B4" FromRole="danhmuc" ToRole="tourNN" />
+          <NavigationProperty Name="tourNNs1" Relationship="Self.FK__tourNN__id_danhm__30F848ED" FromRole="danhmuc" ToRole="tourNN" />
+          <NavigationProperty Name="tourTNs" Relationship="Self.FK__tourTN__id_danhm__2C3393D0" FromRole="danhmuc" ToRole="tourTN" />
+        </EntityType>
+        <EntityType Name="danhmuccon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="danhmuccha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="danhmuc" Relationship="Self.FK__danhmuccon__id__267ABA7A" FromRole="danhmuccon" ToRole="danhmuc" />
+        </EntityType>
+        <EntityType Name="huongdan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ngonngu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="lienhe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gioitinh" Type="Int32" Nullable="false" />
+          <Property Name="quocgia" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dienthoai" Type="Decimal" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="noidung" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loaiphong">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="tenloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="anh" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="loai" Type="Int32" />
+          <Property Name="motangan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_danhmuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tour">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="anh" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="thoigian" Type="Int32" />
+          <Property Name="khoihanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phuongtien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Int32" />
+          <Property Name="dacdiem" Type="Int32" />
+          <Property Name="chitiet" Type="Int32" />
+          <Property Name="loai" Type="Int32" />
+          <NavigationProperty Name="tourNN" Relationship="Self.FK__tourNN__id__2F10007B" FromRole="tour" ToRole="tourNN" />
+          <NavigationProperty Name="tourTN" Relationship="Self.FK__tourTN__id__2B3F6F97" FromRole="tour" ToRole="tourTN" />
+          <NavigationProperty Name="dattours" Relationship="viettoursDBModel.FK__dattour__tour_id__6FE99F9F" FromRole="tour" ToRole="dattour" />
+        </EntityType>
+        <EntityType Name="tourNN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_danhmuc2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="id_danhmuc1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="danhmuc" Relationship="Self.FK__tourNN__id_danhm__300424B4" FromRole="tourNN" ToRole="danhmuc" />
+          <NavigationProperty Name="danhmuc1" Relationship="Self.FK__tourNN__id_danhm__30F848ED" FromRole="tourNN" ToRole="danhmuc" />
+          <NavigationProperty Name="tour" Relationship="Self.FK__tourNN__id__2F10007B" FromRole="tourNN" ToRole="tour" />
+        </EntityType>
+        <EntityType Name="tourTN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_danhmuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="danhmuc" Relationship="Self.FK__tourTN__id_danhm__2C3393D0" FromRole="tourTN" ToRole="danhmuc" />
+          <NavigationProperty Name="tour" Relationship="Self.FK__tourTN__id__2B3F6F97" FromRole="tourTN" ToRole="tour" />
+        </EntityType>
+        <Association Name="FK__danhmuccon__id__267ABA7A">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="1" />
+          <End Role="danhmuccon" Type="Self.danhmuccon" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="danhmuccon">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourNN__id_danhm__300424B4">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="0..1" />
+          <End Role="tourNN" Type="Self.tourNN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourNN">
+              <PropertyRef Name="id_danhmuc2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourNN__id_danhm__30F848ED">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="0..1" />
+          <End Role="tourNN" Type="Self.tourNN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourNN">
+              <PropertyRef Name="id_danhmuc1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourTN__id_danhm__2C3393D0">
+          <End Role="danhmuc" Type="Self.danhmuc" Multiplicity="0..1" />
+          <End Role="tourTN" Type="Self.tourTN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danhmuc">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourTN">
+              <PropertyRef Name="id_danhmuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourNN__id__2F10007B">
+          <End Role="tour" Type="Self.tour" Multiplicity="1" />
+          <End Role="tourNN" Type="Self.tourNN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourNN">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tourTN__id__2B3F6F97">
+          <End Role="tour" Type="Self.tour" Multiplicity="1" />
+          <End Role="tourTN" Type="Self.tourTN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tourTN">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="viettoursDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="danhmucs" EntityType="Self.danhmuc" />
+          <EntitySet Name="danhmuccons" EntityType="Self.danhmuccon" />
+          <EntitySet Name="huongdans" EntityType="Self.huongdan" />
+          <EntitySet Name="lienhes" EntityType="Self.lienhe" />
+          <EntitySet Name="loaiphongs" EntityType="Self.loaiphong" />
+          <EntitySet Name="posts" EntityType="Self.post" />
+          <EntitySet Name="tours" EntityType="Self.tour" />
+          <EntitySet Name="tourNNs" EntityType="Self.tourNN" />
+          <EntitySet Name="tourTNs" EntityType="Self.tourTN" />
+          <AssociationSet Name="FK__danhmuccon__id__267ABA7A" Association="Self.FK__danhmuccon__id__267ABA7A">
+            <End Role="danhmuc" EntitySet="danhmucs" />
+            <End Role="danhmuccon" EntitySet="danhmuccons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourNN__id_danhm__300424B4" Association="Self.FK__tourNN__id_danhm__300424B4">
+            <End Role="danhmuc" EntitySet="danhmucs" />
+            <End Role="tourNN" EntitySet="tourNNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourNN__id_danhm__30F848ED" Association="Self.FK__tourNN__id_danhm__30F848ED">
+            <End Role="danhmuc" EntitySet="danhmucs" />
+            <End Role="tourNN" EntitySet="tourNNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourTN__id_danhm__2C3393D0" Association="Self.FK__tourTN__id_danhm__2C3393D0">
+            <End Role="danhmuc" EntitySet="danhmucs" />
+            <End Role="tourTN" EntitySet="tourTNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourNN__id__2F10007B" Association="Self.FK__tourNN__id__2F10007B">
+            <End Role="tour" EntitySet="tours" />
+            <End Role="tourNN" EntitySet="tourNNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tourTN__id__2B3F6F97" Association="Self.FK__tourTN__id__2B3F6F97">
+            <End Role="tour" EntitySet="tours" />
+            <End Role="tourTN" EntitySet="tourTNs" />
+          </AssociationSet>
+          <FunctionImport Name="danhmuc_delete">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="danhmuc_loai" ReturnType="Collection(viettoursDBModel.danhmuc_loai_Result)">
+          <Parameter Name="loai" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="danhmuc_select" EntitySet="danhmucs" ReturnType="Collection(viettoursDBModel.danhmuc)">
+          <Parameter Name="loai" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="danhmuc_update">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+            <Parameter Name="danhmuccha" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="danhmuccon_select_all" ReturnType="Collection(viettoursDBModel.danhmuccon_select_all_Result)" />
+          <FunctionImport Name="tour_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="tour_insert">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="anh" Mode="In" Type="String" />
+            <Parameter Name="thoigian" Mode="In" Type="Int32" />
+            <Parameter Name="khoihanh" Mode="In" Type="String" />
+            <Parameter Name="phuongtien" Mode="In" Type="String" />
+            <Parameter Name="gia" Mode="In" Type="Int32" />
+            <Parameter Name="dacdiem" Mode="In" Type="Int32" />
+            <Parameter Name="chitiet" Mode="In" Type="Int32" />
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+            <Parameter Name="danhmuc1" Mode="In" Type="String" />
+            <Parameter Name="danhmuc2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="tour_manage" ReturnType="Collection(viettoursDBModel.tour_manage_Result)" />
+          <FunctionImport Name="tour_select" EntitySet="tours" ReturnType="Collection(viettoursDBModel.tour)">
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+            <Parameter Name="id_danhmuc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="tour_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="anh" Mode="In" Type="String" />
+            <Parameter Name="thoigian" Mode="In" Type="Int32" />
+            <Parameter Name="khoihanh" Mode="In" Type="String" />
+            <Parameter Name="phuongtien" Mode="In" Type="String" />
+            <Parameter Name="gia" Mode="In" Type="Int32" />
+            <Parameter Name="dacdiem" Mode="In" Type="Int32" />
+            <Parameter Name="chitiet" Mode="In" Type="Int32" />
+            <Parameter Name="loai" Mode="In" Type="Int32" />
+            <Parameter Name="danhmuc1" Mode="In" Type="String" />
+            <Parameter Name="danhmuc2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="danhmuccha_select" EntitySet="danhmucs" ReturnType="Collection(viettoursDBModel.danhmuc)" />
+          <FunctionImport Name="danhmuccon_select" ReturnType="Collection(viettoursDBModel.danhmuccon_select_Result)" />
+          <FunctionImport Name="danhmuc_insert">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="Int32" />
+            <Parameter Name="danhmuccha" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="dattours" EntityType="viettoursDBModel.dattour" />
+          <AssociationSet Name="FK__dattour__acc_id__70DDC3D8" Association="viettoursDBModel.FK__dattour__acc_id__70DDC3D8">
+            <End Role="account" EntitySet="accounts" />
+            <End Role="dattour" EntitySet="dattours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dattour__tour_id__6FE99F9F" Association="viettoursDBModel.FK__dattour__tour_id__6FE99F9F">
+            <End Role="tour" EntitySet="tours" />
+            <End Role="dattour" EntitySet="dattours" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="danhmuc_loai_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="danhmuc_select_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="mota" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="danhmuccon_select_all_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="mota" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="loaidm" Nullable="true" />
+          <Property Type="String" Name="danhmuccha" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="tour_manage_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="anh" Nullable="true" MaxLength="60" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="String" Name="khoihanh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="phuongtien" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="gia" Nullable="true" />
+          <Property Type="Int32" Name="dacdiem" Nullable="true" />
+          <Property Type="Int32" Name="chitiet" Nullable="true" />
+          <Property Type="Int32" Name="loai" Nullable="true" />
+          <Property Type="String" Name="danhmuc" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="tendm" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="tour_select_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="anh" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="thoigian" Nullable="true" />
+          <Property Type="String" Name="khoihanh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="phuongtien" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="gia" Nullable="true" />
+          <Property Type="Int32" Name="dacdiem" Nullable="true" />
+          <Property Type="Int32" Name="chitiet" Nullable="true" />
+          <Property Type="Int32" Name="loai" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="danhmuccha_select_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="mota" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="danhmuccon_select_Result">
+          <Property Type="String" Name="id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="mota" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="type" Nullable="true" />
+          <Property Type="String" Name="danhmuccha" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <EntityType Name="dattour">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="addr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="quocgia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="tour_id" Type="Int32" Nullable="false" />
+          <Property Name="start" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="songuoi" Type="Int32" Nullable="false" />
+          <Property Name="nguoilon" Type="Int32" />
+          <Property Name="treem_2" Type="Int32" />
+          <Property Name="treem_12" Type="Int32" />
+          <Property Name="loaipid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phong1" Type="Int32" />
+          <Property Name="phong2" Type="Int32" />
+          <Property Name="phong3" Type="Int32" />
+          <Property Name="huongdan_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="acc_id" Type="Int32" />
+          <NavigationProperty Name="account" Relationship="viettoursDBModel.FK__dattour__acc_id__70DDC3D8" FromRole="dattour" ToRole="account" />
+          <NavigationProperty Name="tour" Relationship="viettoursDBModel.FK__dattour__tour_id__6FE99F9F" FromRole="dattour" ToRole="tour" />
+        </EntityType>
+        <Association Name="FK__dattour__acc_id__70DDC3D8">
+          <End Type="viettoursDBModel.account" Role="account" Multiplicity="0..1" />
+          <End Type="viettoursDBModel.dattour" Role="dattour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dattour">
+              <PropertyRef Name="acc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dattour__tour_id__6FE99F9F">
+          <End Type="viettoursDBModel.tour" Role="tour" Multiplicity="1" />
+          <End Type="viettoursDBModel.dattour" Role="dattour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dattour">
+              <PropertyRef Name="tour_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="viettoursDBModelStoreContainer" CdmEntityContainer="viettoursDBEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="viettoursDBModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="quyenhan" ColumnName="quyenhan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="danhmucs">
+            <EntityTypeMapping TypeName="viettoursDBModel.danhmuc">
+              <MappingFragment StoreEntitySet="danhmuc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="danhmuccons">
+            <EntityTypeMapping TypeName="viettoursDBModel.danhmuccon">
+              <MappingFragment StoreEntitySet="danhmuccon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="danhmuccha" ColumnName="danhmuccha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="huongdans">
+            <EntityTypeMapping TypeName="viettoursDBModel.huongdan">
+              <MappingFragment StoreEntitySet="huongdan">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ngonngu" ColumnName="ngonngu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lienhes">
+            <EntityTypeMapping TypeName="viettoursDBModel.lienhe">
+              <MappingFragment StoreEntitySet="lienhe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="quocgia" ColumnName="quocgia" />
+                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="noidung" ColumnName="noidung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaiphongs">
+            <EntityTypeMapping TypeName="viettoursDBModel.loaiphong">
+              <MappingFragment StoreEntitySet="loaiphong">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posts">
+            <EntityTypeMapping TypeName="viettoursDBModel.post">
+              <MappingFragment StoreEntitySet="post">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="loai" ColumnName="loai" />
+                <ScalarProperty Name="motangan" ColumnName="motangan" />
+                <ScalarProperty Name="id_danhmuc" ColumnName="id_danhmuc" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tours">
+            <EntityTypeMapping TypeName="viettoursDBModel.tour">
+              <MappingFragment StoreEntitySet="tour">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="khoihanh" ColumnName="khoihanh" />
+                <ScalarProperty Name="phuongtien" ColumnName="phuongtien" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="dacdiem" ColumnName="dacdiem" />
+                <ScalarProperty Name="chitiet" ColumnName="chitiet" />
+                <ScalarProperty Name="loai" ColumnName="loai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tourNNs">
+            <EntityTypeMapping TypeName="viettoursDBModel.tourNN">
+              <MappingFragment StoreEntitySet="tourNN">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_danhmuc2" ColumnName="id_danhmuc2" />
+                <ScalarProperty Name="id_danhmuc1" ColumnName="id_danhmuc1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tourTNs">
+            <EntityTypeMapping TypeName="viettoursDBModel.tourTN">
+              <MappingFragment StoreEntitySet="tourTN">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_danhmuc" ColumnName="id_danhmuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="danhmuc_delete" FunctionName="viettoursDBModel.Store.danhmuc_delete" />
+          <FunctionImportMapping FunctionImportName="danhmuc_loai" FunctionName="viettoursDBModel.Store.danhmuc_loai">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="viettoursDBModel.danhmuc_loai_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="danhmuc_select" FunctionName="viettoursDBModel.Store.danhmuc_select">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="danhmuc_update" FunctionName="viettoursDBModel.Store.danhmuc_update" />
+          <FunctionImportMapping FunctionImportName="danhmuccon_select_all" FunctionName="viettoursDBModel.Store.danhmuccon_select_all">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="viettoursDBModel.danhmuccon_select_all_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="loaidm" ColumnName="loaidm" />
+                <ScalarProperty Name="danhmuccha" ColumnName="danhmuccha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tour_delete" FunctionName="viettoursDBModel.Store.tour_delete" />
+          <FunctionImportMapping FunctionImportName="tour_insert" FunctionName="viettoursDBModel.Store.tour_insert" />
+          <FunctionImportMapping FunctionImportName="tour_manage" FunctionName="viettoursDBModel.Store.tour_manage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="viettoursDBModel.tour_manage_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="thoigian" ColumnName="thoigian" />
+                <ScalarProperty Name="khoihanh" ColumnName="khoihanh" />
+                <ScalarProperty Name="phuongtien" ColumnName="phuongtien" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="dacdiem" ColumnName="dacdiem" />
+                <ScalarProperty Name="chitiet" ColumnName="chitiet" />
+                <ScalarProperty Name="loai" ColumnName="loai" />
+                <ScalarProperty Name="danhmuc" ColumnName="danhmuc" />
+                <ScalarProperty Name="tendm" ColumnName="tendm" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tour_select" FunctionName="viettoursDBModel.Store.tour_select">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="tour_update" FunctionName="viettoursDBModel.Store.tour_update" />
+          <FunctionImportMapping FunctionImportName="danhmuccha_select" FunctionName="viettoursDBModel.Store.danhmuccha_select">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="danhmuccon_select" FunctionName="viettoursDBModel.Store.danhmuccon_select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="viettoursDBModel.danhmuccon_select_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="danhmuccha" ColumnName="danhmuccha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="danhmuc_insert" FunctionName="viettoursDBModel.Store.danhmuc_insert" />
+          <EntitySetMapping Name="dattours">
+            <EntityTypeMapping TypeName="viettoursDBModel.dattour">
+              <MappingFragment StoreEntitySet="dattour">
+                <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+                <ScalarProperty Name="huongdan_id" ColumnName="huongdan_id" />
+                <ScalarProperty Name="phong3" ColumnName="phong3" />
+                <ScalarProperty Name="phong2" ColumnName="phong2" />
+                <ScalarProperty Name="phong1" ColumnName="phong1" />
+                <ScalarProperty Name="loaipid" ColumnName="loaipid" />
+                <ScalarProperty Name="treem_12" ColumnName="treem_12" />
+                <ScalarProperty Name="treem_2" ColumnName="treem_2" />
+                <ScalarProperty Name="nguoilon" ColumnName="nguoilon" />
+                <ScalarProperty Name="songuoi" ColumnName="songuoi" />
+                <ScalarProperty Name="start" ColumnName="start" />
+                <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+                <ScalarProperty Name="quocgia" ColumnName="quocgia" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

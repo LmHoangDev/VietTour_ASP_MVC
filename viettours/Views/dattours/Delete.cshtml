@@ -1,0 +1,169 @@
+﻿@model viettours.Models.dattour
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>dattour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.addr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quocgia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quocgia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.songuoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.songuoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nguoilon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nguoilon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.treem_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.treem_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.treem_12)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.treem_12)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loaipid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loaipid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phong1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phong1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phong2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phong2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phong3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phong3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.huongdan_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.huongdan_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour.name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

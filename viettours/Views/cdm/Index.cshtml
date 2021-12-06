@@ -1,0 +1,9 @@
+﻿@model viettours.Models.danhmuc
+@using viettours.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+
+
+}
+@if (!string.IsNullOrEmpty(Model.mota)) { <div>@Model.mota</div>}

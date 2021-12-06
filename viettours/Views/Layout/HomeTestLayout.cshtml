@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/HomeTestLayout/index.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <link href="~/Content/AdminLayout/css/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            @Html.Partial("~/Views/Layout/HeaderTopPartial.cshtml")
+            
+        </header>
+        <div class="nav-wrap">
+           @Html.Partial("~/Views/Layout/MenuTestPartial.cshtml")
+        </div>
+        <div class="slide">
+            @RenderSection("slide",required:false)
+           
+        </div>
+        <div id="container" class="container">
+            <div class="row">
+                <div class="col-xl-3 sidebar-left">
+                    @Html.Partial("~/Views/Layout/Sidebar_1_Partial.cshtml")
+                   
+
+                </div>
+                <div class="col-xl-6 content">
+                    <div>
+                        @RenderSection("menulink",required:false)
+                        @RenderBody()
+                    </div>
+  
+                </div>
+                <div class="col-xl-3 sidebar-right">
+                    @Html.Partial("~/Views/Layout/Sidebar_2_Partial.cshtml")
+                </div>
+        </div>
+            </div>
+        <div id="footer">
+            <aside id="text-5" class="">
+                <div class="widget-wrap">
+                    <div class="textwidget">
+                        <div class="logo_thanhvien_giaithuong" align="center">
+                            <img src="~/Content/HomeTestLayout/Images/logo_doitac_thanhvien.png">
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <div id="footer-wrap">
+                @Html.Partial("~/Views/Layout/FooterPartial.cshtml")
+            </div>
+        </div>
+    
+  </div>
+   
+</body>
+</html>

@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link rel="Shortcut Icon" href="https://viettours.com.vn/wp-content/themes/dynamik/css/images/favicon.png" type="image/x-icon" />
+     <link rel='dns-prefetch' href='//fonts.googleapis.com' />
+    <link rel="alternate" type="application/rss+xml" title="Dòng thông tin Viettours Incentives and Events &raquo;" href="https://viettours.com.vn/feed/" />
+        <link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Viettours Incentives and Events &raquo;" href="https://viettours.com.vn/comments/feed/" />
+        <link rel="alternate" type="application/rss+xml" title="Viettours Incentives and Events &raquo; Trang chủ Dòng phản hồi" href="https://viettours.com.vn/trang-chu/feed/" />
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+
+        .slide-s {
+            position: relative;
+        }
+
+        .slide_img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <link href="~/Content/css/css.css" rel="stylesheet" />
+    <link href="~/Content/css/dynamik-min.css" rel="stylesheet" media='all'/>
+    <link href="~/Content/css/formidableforms.css" rel="stylesheet" media='all'/>
+    <link href="~/Content/css/layerslider.css" rel="stylesheet" media="all"/>
+    <link rel='stylesheet' id='formidable-css' href='https://viettours.com.vn/wp-content/plugins/formidable/css/formidableforms.css?ver=1191015' type='text/css' media='all' />
+        <link rel='stylesheet' id='catalyst_minified_stylesheet-css' href='https://viettours.com.vn/wp-content/themes/dynamik/css/dynamik-min.css?ver=1572407057' type='text/css' media='all' />
+        <link rel='stylesheet' id='layerslider-css' href='https://viettours.com.vn/wp-content/plugins/LayerSlider/assets/static/layerslider/css/layerslider.css?ver=6.11.1' type='text/css' media='all' />
+        <link rel='stylesheet' id='ls-google-fonts-css' href='https://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+    <link rel='stylesheet' id='touchcarousel-frontend-css-css' href='https://viettours.com.vn/wp-content/plugins/touchcarousel/touchcarousel/touchcarousel.css?ver=4.9.18' type='text/css' media='all' />
+    <link rel='stylesheet' id='touchcarousel-skin-grey-blue-css' href='https://viettours.com.vn/wp-content/plugins/touchcarousel/touchcarousel/grey-blue-skin/grey-blue-skin.css?ver=4.9.18' type='text/css' media='all' />
+    <link rel='stylesheet' id='mediaelement-css' href='https://viettours.com.vn/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.6-78496d1' type='text/css' media='all' />
+    <link rel='stylesheet' id='wp-mediaelement-css' href='https://viettours.com.vn/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=4.9.18' type='text/css' media='all' />
+    <link rel='stylesheet' id='views-pagination-style-css' href='https://viettours.com.vn/wp-content/plugins/wp-views/embedded/res/css/wpv-pagination.css?ver=2.9.3' type='text/css' media='all' />
+    <style id='views-pagination-style-inline-css' type='text/css'>
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default > span.wpv-sort-list, .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item {
+            border-color: #cdcdcd;
+        }
+
+            .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item a {
+                color: #444;
+                background-color: #fff;
+            }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default a:hover, .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default a:focus {
+            color: #000;
+            background-color: #eee;
+        }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-default .wpv-sort-list-item.wpv-sort-list-current a {
+            color: #000;
+            background-color: #eee;
+        }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey > span.wpv-sort-list, .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item {
+            border-color: #cdcdcd;
+        }
+
+            .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item a {
+                color: #444;
+                background-color: #eeeeee;
+            }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey a:hover, .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey a:focus {
+            color: #000;
+            background-color: #e5e5e5;
+        }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-grey .wpv-sort-list-item.wpv-sort-list-current a {
+            color: #000;
+            background-color: #e5e5e5;
+        }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue > span.wpv-sort-list, .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item {
+            border-color: #0099cc;
+        }
+
+            .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item a {
+                color: #444;
+                background-color: #cbddeb;
+            }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue a:hover, .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue a:focus {
+            color: #000;
+            background-color: #95bedd;
+        }
+
+        .wpv-sort-list-dropdown.wpv-sort-list-dropdown-style-blue .wpv-sort-list-item.wpv-sort-list-current a {
+            color: #000;
+            background-color: #95bedd;
+        }
+    </style>
+    <link rel='stylesheet' id='addthis_all_pages-css' href='https://viettours.com.vn/wp-content/plugins/addthis/frontend/build/addthis_wordpress_public.min.css?ver=4.9.18' type='text/css' media='all' />
+    <link rel='stylesheet' id='wp-ui-css' href='https://viettours.com.vn/wp-content/plugins/wp-ui/css/wp-ui.css?ver=4.9.18' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpui-light-css' href='https://viettours.com.vn/wp-content/plugins/wp-ui/css/themes/wpui-light.css?ver=4.9.18' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpui-multiple-css' href='https://viettours.com.vn/wp-content/plugins/wp-ui/css/css.php?styles=wpui-light%7Cwpui-blue%7Cwpui-red%7Cwpui-green%7Cwpui-dark%7Cwpui-quark%7Cwpui-alma%7Cwpui-macish%7Cwpui-redmond%7Cwpui-sevin&#038;ver=4.9.18' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpui-custom-css-css' href='https://viettours.com.vn/?wpui-style=custom&#038;ver=4.9.18' type='text/css' media='all' />
+     <script>if (document.location.protocol != "https:") { document.location = document.URL.replace(/^http:/i, "https:"); }</script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+        <script type='text/javascript'>
+            /* <![CDATA[ */
+            var LS_Meta = { "v": "6.11.1", "fixGSAP": "1" };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-content/plugins/LayerSlider/assets/static/layerslider/js/layerslider.utils.js?ver=6.11.1'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-content/plugins/LayerSlider/assets/static/layerslider/js/layerslider.kreaturamedia.jquery.js?ver=6.11.1'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-content/plugins/LayerSlider/assets/static/layerslider/js/layerslider.transitions.js?ver=6.11.1'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-content/plugins/touchcarousel/touchcarousel/jquery.touchcarousel.min.js?ver=1.0'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/tabs.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/accordion.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-includes/js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
+        <script type='text/javascript' src='https://viettours.com.vn/?wpui-script=before&#038;ver=4.9.18'></script>
+        <script type='text/javascript'>
+            /* <![CDATA[ */
+            var wpUIOpts = { "wpUrl": "https:\/\/viettours.com.vn", "pluginUrl": "https:\/\/viettours.com.vn\/wp-content\/plugins\/wp-ui\/", "enableTabs": "on", "enableAccordion": "on", "enableSpoilers": "on", "enableDialogs": "on", "tabsEffect": "fadeIn", "effectSpeed": "400", "accordEffect": "fadeIn", "alwaysRotate": "stop", "tabsEvent": "click", "collapsibleTabs": "off", "accordEvent": "click", "singleLineTabs": "off", "accordAutoHeight": "on", "accordCollapsible": "off", "accordEasing": "linear", "mouseWheelTabs": "list", "bottomNav": "off", "tabPrevText": "Prev", "tabNextText": "Next", "spoilerShowText": "Click to show", "spoilerHideText": "Click to hide", "cookies": "on", "hashChange": "on", "docWriteFix": "on", "linking_history": "on", "misc_options": "hashing_method=1\r\ntinymce_icon_row=3" };
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='https://viettours.com.vn/wp-content/plugins/wp-ui/js/wp-ui.js?ver=0.8.8'></script>
+    <meta name="generator" content="Powered by LayerSlider 6.11.1 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Plugin for WordPress." />
+    <link rel="pingback" href="https://viettours.com.vn/xmlrpc.php" />
+    <link rel='https://api.w.org/' href='https://viettours.com.vn/wp-json/' />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://viettours.com.vn/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://viettours.com.vn/wp-includes/wlwmanifest.xml" />
+    <link rel='shortlink' href='https://viettours.com.vn/' />
+    <link rel="alternate" type="application/json+oembed" href="https://viettours.com.vn/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fviettours.com.vn%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="https://viettours.com.vn/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fviettours.com.vn%2F&#038;format=xml" />
+    <link rel="stylesheet" href="https://viettours.com.vn/wp-content/plugins/download-button/shortcodes.css?ver=3.0.4" type="text/css" />
+    <meta name="NextGEN" version="3.2.18" />
+    <script type="text/javascript">document.documentElement.className += " js";</script>
+    <link rel="canonical" href="https://viettours.com.vn/" />
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+    <style type="text/css" media="screen">
+        body {
+            position: relative
+        }
+
+        #dynamic-to-top {
+            display: none;
+            overflow: hidden;
+            width: auto;
+            z-index: 90;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            top: auto;
+            left: auto;
+            font-family: sans-serif;
+            font-size: 1em;
+            color: #fff;
+            text-decoration: none;
+            text-shadow: 0 1px 0 #333;
+            font-weight: bold;
+            padding: 17px 16px;
+            border: 0px solid #219aa4;
+            background: #2A8C94;
+            --webkit-background-origin: border;
+            --moz-background-origin: border;
+            --icab-background-origin: border;
+            --khtml-background-origin: border;
+            --o-background-origin: border;
+            --background-origin: border;
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding-box;
+            --icab-background-clip: padding-box;
+            --khtml-background-clip: padding-box;
+            --o-background-clip: padding-box;
+            background-clip: padding-box;
+            -webkit-box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );
+            --ms-box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );
+            -moz-box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );
+            --o-box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );
+            --khtml-box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );
+            --icab-box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );
+            box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 ), inset 0 0 0 1px rgba( 0, 0, 0, 0.2 ), inset 0 1px 0 rgba( 255, 255, 255, .4 ), inset 0 10px 10px rgba( 255, 255, 255, .1 );
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            --icab-border-radius: 30px;
+            --khtml-border-radius: 30px;
+            border-radius: 30px
+        }
+
+            #dynamic-to-top:hover {
+                background: #4ec2d9;
+                background: #2A8C94 -webkit-gradient( linear, 0% 0%, 0% 100%, from( rgba( 255, 255, 255, .2 ) ), to( rgba( 0, 0, 0, 0 ) ) );
+                background: #2A8C94 -webkit-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -khtml-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -moz-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -o-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -ms-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -icab-linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 linear-gradient( top, rgba( 255, 255, 255, .2 ), rgba( 0, 0, 0, 0 ) );
+                cursor: pointer
+            }
+
+            #dynamic-to-top:active {
+                background: #2A8C94;
+                background: #2A8C94 -webkit-gradient( linear, 0% 0%, 0% 100%, from( rgba( 0, 0, 0, .3 ) ), to( rgba( 0, 0, 0, 0 ) ) );
+                background: #2A8C94 -webkit-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -moz-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -khtml-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -o-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -ms-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 -icab-linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) );
+                background: #2A8C94 linear-gradient( top, rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, 0 ) )
+            }
+
+            #dynamic-to-top, #dynamic-to-top:active, #dynamic-to-top:focus, #dynamic-to-top:hover {
+                outline: none
+            }
+
+                #dynamic-to-top span {
+                    display: block;
+                    overflow: hidden;
+                    width: 14px;
+                    height: 12px;
+                    background: url('../../Content/Images/up.png') no-repeat center center;
+                }
+    </style>
+    <style type="text/css">
+        .touchcarousel.tc-layout-4 .touchcarousel-item {
+            width: 130px;
+            min-height: 130px;
+            margin-right: 11px;
+            position: relative;
+            overflow: hidden;
+            background: #ebf3f3;
+        }
+
+            .touchcarousel.tc-layout-4 .touchcarousel-item p {
+                margin: 0;
+                padding: 0;
+            }
+
+            .touchcarousel.tc-layout-4 .touchcarousel-item a.tc-state {
+                display: block;
+                width: 130px;
+                min-height: 130px;
+                position: relative;
+                text-decoration: none;
+                color: #3e4245;
+                -webkit-transition: color 0.2s ease-out;
+                -moz-transition: color 0.2s ease-out;
+                --ms-transition: color 0.2s ease-out;
+                -o-transition: color 0.2s ease-out;
+                transition: color 0.2s ease-out;
+            }
+
+            .touchcarousel.tc-layout-4 .touchcarousel-item img {
+                max-width: none;
+                border: 0;
+                margin: 0;
+            }
+
+            .touchcarousel.tc-layout-4 .touchcarousel-item img,
+            .touchcarousel.tc-layout-4 .touchcarousel-item h4,
+            .touchcarousel.tc-layout-4 .touchcarousel-item span {
+                position: relative;
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+
+        .touchcarousel.tc-layout-4 .tc-block {
+            margin: 0 4px 3px 8px
+        }
+
+        .touchcarousel.tc-layout-4 .touchcarousel-item h4 {
+            font-size: 14px;
+            line-height: 1.4em;
+            padding: 0;
+            text-decoration: none;
+            font-family: 'Helvetica Neue', Arial, serif;
+        }
+
+        .touchcarousel.tc-layout-4 .touchcarousel-item a.tc-state:hover {
+            color: #13937a;
+        }
+
+        .touchcarousel.tc-layout-4 .touchcarousel-item span {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+    <script src="https://viettours.com.vn/wp-content/themes/catalyst/lib/js/html5.js" type="text/javascript"></script>
+
+    <script data-cfasync="false" type="text/javascript">
+        if (window.addthis_product === undefined) { window.addthis_product = "wpp"; } if (window.wp_product_version === undefined) { window.wp_product_version = "wpp-6.2.6"; } if (window.addthis_share === undefined) { window.addthis_share = {}; } if (window.addthis_config === undefined) { window.addthis_config = { "data_track_clickback": false, "ignore_server_config": true, "ui_atversion": 300 }; } if (window.addthis_layers === undefined) { window.addthis_layers = {}; } if (window.addthis_layers_tools === undefined) { window.addthis_layers_tools = [{ "sharetoolbox": { "numPreferredServices": 5, "counts": "one", "size": "16px", "style": "fixed", "shareCountThreshold": 0, "elements": ".addthis_inline_share_toolbox_below,.at-below-post" } }]; } else { window.addthis_layers_tools.push({ "sharetoolbox": { "numPreferredServices": 5, "counts": "one", "size": "16px", "style": "fixed", "shareCountThreshold": 0, "elements": ".addthis_inline_share_toolbox_below,.at-below-post" } }); } if (window.addthis_plugin_info === undefined) { window.addthis_plugin_info = { "info_status": "enabled", "cms_name": "WordPress", "plugin_name": "Share Buttons by AddThis", "plugin_version": "6.2.6", "plugin_mode": "WordPress", "anonymous_profile_id": "wp-9db406931e03d61e35faf9832d976827", "page_info": { "template": "home", "post_type": "" }, "sharing_enabled_on_post_via_metabox": false }; }
+        (function () {
+            var first_load_interval_id = setInterval(function () {
+                if (typeof window.addthis !== 'undefined') {
+                    window.clearInterval(first_load_interval_id);
+                    if (typeof window.addthis_layers !== 'undefined' && Object.getOwnPropertyNames(window.addthis_layers).length > 0) {
+                        window.addthis.layers(window.addthis_layers);
+                    }
+                    if (Array.isArray(window.addthis_layers_tools)) {
+                        for (i = 0; i < window.addthis_layers_tools.length; i++) {
+                            window.addthis.layers(window.addthis_layers_tools[i]);
+                        }
+                    }
+                }
+            }, 1000)
+        }());
+    </script>
+    <script data-cfasync="false" type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=wp-9db406931e03d61e35faf9832d976827" async="async"></script>
+    <meta name="google-site-verification" content="pDdiLDtkj8buyUA_nr_8aOvWVLGvN7-QROSo4uN_mvw" />
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+</head>
+<body data-rsssl="1" class="home page-template-default page page-id-2225 windows chrome custom-layout double-sidebar trangchu logo-image">
+    <div class="ls-wp-container fitvidsignore ls-hidden ls-v5 ls-container ls-responsive" data-layerslider-uid="LSndfo9l6oy"><div class="ls-slide" data-ls="duration:4000;transition2d:4,10,15,21,27,28;" style="width: 1000px; height: 350px;"></div><div class="ls-slide" data-ls="duration:4000;transition2d:4,10,15,21,27,28;" style="width: 1000px; height: 350px;"></div><div class="ls-slide" data-ls="duration:4000;transition2d:4,10,15,21,27,28;" style="width: 1000px; height: 350px;"></div></div>
+
+    <div id="wrap" class="clearfix">
+        <div id="header-wrap">
+            <header id="header" role="banner">
+                <div id="header-left">
+                    <p id="title"><a href="https://viettours.com.vn/" title="Viettours Incentives and Events">Viettours Incentives and Events</a></p><p id="tagline"></p>
+                </div>
+                <div id="header-right">
+                </div>
+            </header>
+        </div>
+
+        @Html.Partial("~/Views/Layout/HeaderTopPartial.cshtml")
+        <div id="navbar-1-wrap">
+            @Html.Partial("~/Views/Layout/MenuTestPartial.cshtml")
+        </div>
+
+        <div id="container-wrap">
+            @* slide*@
+                    @RenderSection("Slide", required: false)
+            @* slide*@
+            <div id="container">
+
+
+                <div id="content-sidebar-wrap">
+
+
+                    <div id="content-wrap">
+                        @*@RenderSection("duongan",required:false)*@
+                       
+
+                        <div id="content" class="hfeed" role="main">
+                            @RenderSection("menulink",required:false)
+                           
+                            @RenderBody()
+                          
+                        </div>
+
+                        <div style="clear:both;"></div>
+
+
+                    </div> 
+                    @Html.Partial("~/Views/Layout/Sidebar_1_Partial.cshtml")
+
+                 
+                    <div style="clear:both;"></div>
+                </div>
+             
+                @Html.Partial("~/Views/Layout/Sidebar_2_Partial.cshtml")
+            </div> 
+
+          
+            <div style="clear:both;"></div>
+        </div>
+        <aside id="text-5" class="widget widget_text catalyst-widget-area logo_doitac">
+            <div class="widget-wrap">
+                <div class="textwidget">
+                    <div class="logo_thanhvien_giaithuong" align="center">
+                        <img src="~/Content/Images/logo_doitac_thanhvien.png">
+                    </div>
+                </div>
+            </div>
+        </aside>
+        @Html.Partial("~/Views/Layout/FooterPartial.cshtml")
+    </div> 
+    <script type="text/javascript">document.write(unescape("%3Cscript src=%27http://s10.histats.com/js15.js%27 type=%27text/javascript%27%3E%3C/script%3E"));</script>
+    <script src="http://s10.histats.com/js15.js" type="text/javascript"></script>
+    <a href="http://www.histats.com" target="_blank" title="web stats">
+        <script type="text/javascript">
+            try {
+                Histats.start(1, 1626810, 4, 601, 110, 30, "00001001");
+                Histats.track_hits();
+            } catch (err) { };
+        </script>
+    </a>
+    <noscript>
+        <a href="http://www.histats.com" target="_blank"><img src="https://sstatic1.histats.com/0.gif?1626810&101" alt="web stats" border="0"></a>
+    </noscript>
+    <p></p>
+
+    </div>
+    <div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; top: -9999px; z-index: 100000;"><iframe id="_atssh769" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; top: 0px; z-index: 100000; border: 0px; left: 0px;" __idm_frm__="328" src="https://s7.addthis.com/static/sh.f48a1a04fe8dbf021b4cda1d.html#rand=0.0893698558169631&amp;iit=1626946098595&amp;tmr=load%3D1626946098244%26core%3D1626946098281%26main%3D1626946098591%26ifr%3D1626946098596&amp;cb=0&amp;cdn=0&amp;md=0&amp;kw=&amp;ab=-&amp;dh=viettours.com.vn&amp;dr=https%3A%2F%2Fviettours.com.vn%2Fen%2F&amp;du=https%3A%2F%2Fviettours.com.vn%2F&amp;href=https%3A%2F%2Fviettours.com.vn%2F&amp;dt=Viettours%20Incentives%20and%20Events%20%7C&amp;dbg=0&amp;cap=tc%3D0%26ab%3D0&amp;inst=1&amp;jsl=1&amp;prod=undefined&amp;lng=vi&amp;ogt=&amp;pc=wpp&amp;pub=wp-9db406931e03d61e35faf9832d976827&amp;ssl=1&amp;sid=60f93a3205daa925&amp;srf=0.01&amp;ver=300&amp;xck=0&amp;xtr=0&amp;og=&amp;csi=undefined&amp;rev=v8.28.8-wp&amp;ct=0&amp;xld=1&amp;xd=1"></iframe></div>
+    <style id="service-icons-0"></style>
+    @* end #wrap
+        ngg_resource_manager_marker *@
+    <script type="text/html" id="tmpl-wp-playlist-current-item">
+        <# if ( data.image ) { #>
+            <img src="{{ data.thumb.src }}" alt="" />
+            <# } #>
+                <div class="wp-playlist-caption">
+                    <span class="wp-playlist-item-meta wp-playlist-item-title">&#8220;{{ data.title }}&#8221;</span>
+                    <# if ( data.meta.album ) { #>
+                        <span class="wp-playlist-item-meta wp-playlist-item-album">{{ data.meta.album }}</span><# } #>
+                            <# if ( data.meta.artist ) { #><span class="wp-playlist-item-meta wp-playlist-item-artist">{{ data.meta.artist }}</span><# } #>
+                </div>
+    </script>
+    <script type="text/html" id="tmpl-wp-playlist-item">
+        <div class="wp-playlist-item">
+            <a class="wp-playlist-caption" href="{{ data.src }}">
+                {{ data.index ? ( data.index + '. ' ) : '' }}
+                <# if ( data.caption ) { #>
+                    {{ data.caption }}
+                    <# } else { #>
+                        <span class="wp-playlist-item-title">&#8220;{{{ data.title }}}&#8221;</span>
+                        <# if ( data.artists && data.meta.artist ) { #>
+                            <span class="wp-playlist-item-artist"> &mdash; {{ data.meta.artist }}</span>
+                            <# } #>
+                                <# } #>
+            </a>
+            <# if ( data.meta.length_formatted ) { #>
+                <div class="wp-playlist-item-length">{{ data.meta.length_formatted }}</div>
+                <# } #>
+        </div>
+    </script>
+
+    <style>
+        .gsc-control-cse .gsc-table-result {
+            font-family: inherit;
+        }
+
+        .gsc-control-cse .gsc-input-box {
+            height: inherit;
+        }
+
+        input.gsc-input,
+        .gsc-input-box,
+        .gsc-input-box-hover,
+        .gsc-input-box-focus,
+        .gsc-search-button, input.gsc-search-button-v2 {
+            box-sizing: content-box;
+            line-height: normal;
+            margin-top: 0px;
+        }
+    </style>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/comment-reply.min.js?ver=4.9.18"></script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-content/themes/catalyst/lib/js/navbars/superfish.js?ver=1.5.4"></script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-content/plugins/dynamic-to-top/js/libs/jquery.easing.js?ver=1.3"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var mv_dynamic_to_top = { "text": "To Top", "version": "0", "min": "300", "speed": "1100", "easing": "linear", "margin": "20" };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-content/plugins/dynamic-to-top/js/dynamic.to.top.min.js?ver=3.5"></script><a href="#" id="dynamic-to-top" style="display: none;"><span>&nbsp;</span></a>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/wp-embed.min.js?ver=4.9.18"></script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4"></script>
+    <script type="text/javascript">
+        var mejsL10n = { "language": "vi", "strings": { "mejs.install-flash": "B\u1ea1n \u0111ang s\u1eed d\u1ee5ng tr\u00ecnh duy\u1ec7t kh\u00f4ng h\u1ed7 tr\u1ee3 Flash player. Vui l\u00f2ng b\u1eadt ho\u1eb7c c\u00e0i \u0111\u1eb7t \n phi\u00ean b\u1ea3n m\u1edbi nh\u1ea5t t\u1ea1i https:\/\/get.adobe.com\/flashplayer\/", "mejs.fullscreen-off": "T\u1eaft hi\u1ec3n th\u1ecb to\u00e0n m\u00e0n h\u00ecnh", "mejs.fullscreen-on": "Hi\u1ec3n th\u1ecb to\u00e0n m\u00e0n h\u00ecnh ", "mejs.download-video": "T\u1ea3i video v\u1ec1", "mejs.fullscreen": "To\u00e0n m\u00e0n h\u00ecnh", "mejs.time-jump-forward": ["Tua nhanh 1 gi\u00e2y", "Chuy\u1ec3n v\u1ec1 ph\u00eda tr\u01b0\u1edbc %1 gi\u00e2y"], "mejs.loop": "Chuy\u1ec3n \u0111\u1ed5i v\u00f2ng l\u1eb7p", "mejs.play": "Ch\u1ea1y", "mejs.pause": "T\u1ea1m d\u1eebng", "mejs.close": "\u0110\u00f3ng", "mejs.time-slider": "Th\u1eddi gian tr\u00ecnh chi\u1ebfu", "mejs.time-help-text": "S\u1eed d\u1ee5ng c\u00e1c ph\u00edm m\u0169i t\u00ean Tr\u00e1i\/Ph\u1ea3i \u0111\u1ec3 ti\u1ebfn m\u1ed9t gi\u00e2y, m\u0169i t\u00ean L\u00ean\/Xu\u1ed1ng \u0111\u1ec3 ti\u1ebfn m\u01b0\u1eddi gi\u00e2y.", "mejs.time-skip-back": ["B\u1ecf qua 1 gi\u00e2y", "L\u00f9i l\u1ea1i %1 gi\u00e2y"], "mejs.captions-subtitles": "Ph\u1ee5 \u0111\u1ec1", "mejs.captions-chapters": "C\u00e1c m\u1ee5c", "mejs.none": "Tr\u1ed1ng", "mejs.mute-toggle": "B\u1eadt\/t\u1eaft ch\u1ebf \u0111\u1ed9 im l\u1eb7ng", "mejs.volume-help-text": "S\u1eed d\u1ee5ng c\u00e1c ph\u00edm m\u0169i t\u00ean L\u00ean\/Xu\u1ed1ng \u0111\u1ec3 t\u0103ng ho\u1eb7c gi\u1ea3m \u00e2m l\u01b0\u1ee3ng.", "mejs.unmute": "B\u1eadt ti\u1ebfng", "mejs.mute": "T\u1eaft ti\u1ebfng", "mejs.volume-slider": "\u00c2m l\u01b0\u1ee3ng Tr\u00ecnh chi\u1ebfu", "mejs.video-player": "Tr\u00ecnh ch\u01a1i Video", "mejs.audio-player": "Tr\u00ecnh ch\u01a1i Audio", "mejs.ad-skip": "B\u1ecf qua qu\u1ea3ng c\u00e1o", "mejs.ad-skip-info": ["B\u1ecf qua trong 1 gi\u00e2y", "B\u1ecf qua trong %1 gi\u00e2y"], "mejs.source-chooser": "Ch\u1ecdn ngu\u1ed3n", "mejs.stop": "D\u1eebng", "mejs.speed-rate": "T\u1ed1c \u0111\u1ed9", "mejs.live-broadcast": "Tr\u1ef1c ti\u1ebfp", "mejs.afrikaans": "Ti\u1ebfng Nam Phi", "mejs.albanian": "Ti\u1ebfng Albani", "mejs.arabic": "Ti\u1ebfng \u1ea2 R\u1eadp", "mejs.belarusian": "Ti\u1ebfng Belarus", "mejs.bulgarian": "Ti\u1ebfng Bulgari", "mejs.catalan": "Ti\u1ebfng Catalan", "mejs.chinese": "Ti\u1ebfng Trung Qu\u1ed1c", "mejs.chinese-simplified": "Ti\u1ebfng Trung Qu\u1ed1c (gi\u1ea3n th\u1ec3)", "mejs.chinese-traditional": "Ti\u1ebfng Trung ( Ph\u1ed3n th\u1ec3 )", "mejs.croatian": "Ti\u1ebfng Croatia", "mejs.czech": "Ti\u1ebfng S\u00e9c", "mejs.danish": "Ti\u1ebfng \u0110an M\u1ea1ch", "mejs.dutch": "Ti\u1ebfng H\u00e0 Lan", "mejs.english": "Ti\u1ebfng Anh", "mejs.estonian": "Ti\u1ebfng Estonia", "mejs.filipino": "Ti\u1ebfng Philippin", "mejs.finnish": "Ti\u1ebfng Ph\u1ea7n Lan", "mejs.french": "Ti\u1ebfng Ph\u00e1p", "mejs.galician": "Ti\u1ebfng Galicia", "mejs.german": "Ti\u1ebfng \u0110\u1ee9c", "mejs.greek": "Ti\u1ebfng Hy L\u1ea1p", "mejs.haitian-creole": "Ti\u1ebfng Haiti", "mejs.hebrew": "Ti\u1ebfng Do Th\u00e1i", "mejs.hindi": "Ti\u1ebfng Hindu", "mejs.hungarian": "Ti\u1ebfng Hungary", "mejs.icelandic": "Ti\u1ebfng Ailen", "mejs.indonesian": "Ti\u1ebfng Indonesia", "mejs.irish": "Ti\u1ebfng Ailen", "mejs.italian": "Ti\u1ebfng \u00dd", "mejs.japanese": "Ti\u1ebfng Nh\u1eadt", "mejs.korean": "Ti\u1ebfng H\u00e0n Qu\u1ed1c", "mejs.latvian": "Ti\u1ebfng Latvia", "mejs.lithuanian": "Ti\u1ebfng Lithuani", "mejs.macedonian": "Ti\u1ebfng Macedonia", "mejs.malay": "Ti\u1ebfng Malaysia", "mejs.maltese": "Ti\u1ebfng Maltese", "mejs.norwegian": "Ti\u1ebfng Na Uy", "mejs.persian": "Ti\u1ebfng Ba T\u01b0", "mejs.polish": "Ti\u1ebfng Ba Lan", "mejs.portuguese": "Ti\u1ebfng B\u1ed3 \u0110\u00e0o Nha", "mejs.romanian": "Ti\u1ebfng Romani", "mejs.russian": "Ti\u1ebfng Nga", "mejs.serbian": "Ti\u1ebfng Serbia", "mejs.slovak": "Ti\u1ebfng Slovakia", "mejs.slovenian": "Ti\u1ebfng Slovenia", "mejs.spanish": "Ti\u1ebfng T\u00e2y Ban Nha", "mejs.swahili": "Ti\u1ebfng Swahili", "mejs.swedish": "Ti\u1ebfng Th\u1ee5y \u0110i\u1ec3n", "mejs.tagalog": "Ti\u1ebfng Tagalog", "mejs.thai": "Ti\u1ebfng Th\u00e1i", "mejs.turkish": "Ti\u1ebfng Th\u1ed5 Nh\u0129 K\u00ec", "mejs.ukrainian": "Ti\u1ebfng Ukraina", "mejs.vietnamese": "Ti\u1ebfng Vi\u1ec7t", "mejs.welsh": "Ti\u1ebfng Welsh", "mejs.yiddish": "Ti\u1ebfng Yiddish" } };
+    </script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.6-78496d1"></script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=4.9.18"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var _wpmejsSettings = { "pluginPath": "\/wp-includes\/js\/mediaelement\/", "classPrefix": "mejs-", "stretching": "responsive" };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=4.9.18"></script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/underscore.min.js?ver=1.8.3"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var _wpUtilSettings = { "ajax": { "url": "\/wp-admin\/admin-ajax.php" } };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/wp-util.min.js?ver=4.9.18"></script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/backbone.min.js?ver=1.2.3"></script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/mediaelement/wp-playlist.min.js?ver=4.9.18"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var wpv_pagination_local = { "front_ajaxurl": "https:\/\/viettours.com.vn\/wp-admin\/admin-ajax.php", "calendar_image": "https:\/\/viettours.com.vn\/wp-content\/plugins\/wp-views\/embedded\/res\/img\/calendar.gif", "calendar_text": "Select date", "datepicker_min_date": null, "datepicker_max_date": null, "datepicker_min_year": "1582", "datepicker_max_year": "3000", "resize_debounce_tolerance": "100", "datepicker_style_url": "https:\/\/viettours.com.vn\/wp-content\/plugins\/types\/vendor\/toolset\/toolset-common\/toolset-forms\/css\/wpt-jquery-ui\/jquery-ui-1.11.4.custom.css", "wpmlLang": "" };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://viettours.com.vn/wp-includes/js/wpv-pagination-embedded.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            var extra_css = $("#views-extra-css") ? $("#views-extra-css").text() : null; if (extra_css) {
+                $('head').append('<style>' + extra_css + '</style>');
+                $("#views-extra-css").remove();
+            }
+            if ($("#views-extra-css-ie7").length > 0) {
+                $('head').append($("#views-extra-css-ie7").html());
+                $("#views-extra-css-ie7").remove();
+            }
+        });
+    </script>
+
+
+
+    <div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div><table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 69px; display: none; top: 561px; position: absolute; left: 274px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table><iframe id="nr-ext-rsicon" __idm_frm__="330" style="position: absolute; display: none; width: 50px; height: 50px; z-index: 2147483647; border-style: none; background: transparent;"></iframe>
+</body>
+
+
+</html>

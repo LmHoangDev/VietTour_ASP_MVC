@@ -1,0 +1,72 @@
+﻿@using viettours.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<tour>
+@using viettours.Custom_Helpers
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "DisplayAllTour";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+}
+
+@section menulink {
+
+    <aside id="bcn_widget-2" class="widget widget_breadcrumb_navxt catalyst-widget-area breadcrum_vt" style="margin-top:10px;">
+        <div class="widget-wrap">
+            <div class="breadcrumbs" vocab="https://schema.org/" typeof="BreadcrumbList">
+                <span typeof="v:Breadcrumb">
+                    <a rel="v:url" property="v:title" title="Go to Viettours Incentives and Events." href="@Url.Action("TrangChu","Home")" class="home">Trang chủ</a>
+                </span> &gt; <span typeof="v:Breadcrumb">
+                    <a rel="v:url" property="v:title" title="Go to Tours." href="#">Tours</a>
+              </span>
+            </div>
+        </div>
+    </aside>
+}
+<table width="100%" style="font-family:sans-serif;">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+
+                    @Html.khoi_Tour(item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav class="post-nav" style="text-align:center">
+    <span style="color:#f40f0f;font-weight:600;font-family:sans-serif;;font-size:15px;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    </span>
+    @Html.PagedListPager(Model, page => Url.Action("DisplayAllTour", new { page = page }))
+</nav>
+
+<style>
+
+        *{}
+        table .title-tour{
+            font-weight:600;
+            font-size:13px;
+        }
+        table .chitiettour{
+            font-size:13px;
+        }
+        .readmore_tour.xemtour {
+            padding: 8px 16px;
+        }
+       @* .readmore_tour.xemtour a{
+
+        }*@
+        .readmore_tour {
+
+        }
+        .tour_taxonomy_view strong {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        span.tieude-tour {
+            font-size: 14px;
+        }
+</style>

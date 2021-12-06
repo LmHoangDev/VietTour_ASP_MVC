@@ -1,0 +1,83 @@
+﻿
+@using viettours.Models;
+@model account
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    account a = (account)Session["admin"];
+
+}
+
+<table class="view-prof">
+    <tr>
+        <td colspan="2">
+            <h2 style="color:#ff6363;font-size:20px;text-align:center;">Thông tin tài khoản</h2>
+        </td>
+    </tr>
+    <tr>
+        <th>Tên đăng nhập :</th>
+        <td>@a.username</td>
+    </tr>
+
+    <tr>
+        <th>
+            Email :
+        </th>
+        <td>
+            @a.email
+        </td>
+
+    </tr>
+    <tr>
+        <th>
+            Địa chỉ :
+        </th>
+        <td>
+            @a.diachi
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Quyền hạn :
+        </th>
+        <td>
+            @if (a.quyenhan == 0)
+            {
+                <span>Admin</span>
+            }
+            else
+            {
+                <span>Mod</span>
+            }
+
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            @if (ViewBag.error != null)
+            {
+                <span>@ViewBag.error</span>
+            }
+        </td>
+    </tr>
+</table>
+
+<style>
+    *{
+
+    }
+    .view-prof {
+        width: 300px;
+        margin: 0 auto;
+        min-height: 250px;
+        background-color:#fff;
+        border-radius:5px;
+    }
+        .view-prof tr, .view-prof td {
+           @* border: 5px solid #F0F7F5;*@
+
+        }
+        .view-prof tr th{
+            padding-left:15px;
+        }
+</style>

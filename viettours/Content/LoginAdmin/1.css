@@ -1,0 +1,74 @@
+*{margin: 0; padding: 0;}
+.footer {
+    padding: 14px 0;
+}
+
+.footer a:hover {
+    text-decoration: none;
+}
+
+.img-login {}
+
+button.btn.btn-primary {
+    padding: 13px 31px !important;
+}
+
+.img-login {
+    text-align: center;
+    padding-bottom: 19px;
+}
+
+label.form-check-label {
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+form {
+   /* width: 100%;*/
+    background-color: white;
+    padding: 51px 25px;
+}
+
+button.btn.btn-primary {
+    padding: 13px 41px;
+}
+
+label.form-check-label {
+    margin-left: -14px;
+}
+
+._cottrai {
+    padding: 8px;
+}
+
+input#exampleCheck1 {
+    width: 20px;
+    height: 20px;
+}
+
+._cottrai {
+    margin-left: 22px;
+}
+.form-check.acess {
+    display: flex;
+    justify-content: space-between;
+} 
+
+html,body{
+    width:100%;
+    height: 100%;
+    background-color: #f1f1f1;
+}
+#login {
+    width: 370px;
+    margin: auto;
+    position: fixed;
+    left: 39%;
+    top: 10%;
+}
+@media screen and (max-height:550px){
+    #login{
+        padding: 20px 0;
+    }
+    
+}

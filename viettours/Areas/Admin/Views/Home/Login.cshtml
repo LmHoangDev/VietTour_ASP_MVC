@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+
+}
+
+
+
+<div data-editor="ClassicEditor" data-collaboration="false"></div>
+<textarea name="editor" class="editor" id="editor"></textarea>
+<script src="~/ck_05/build/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('.editor'), {
+
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'imageUpload',
+                    'blockQuote',
+                    'insertTable',
+                    'mediaEmbed',
+                    'undo',
+                    'redo'
+                ]
+            },
+            language: 'vi',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:inline',
+                    'imageStyle:block',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+            licenseKey: '',
+
+
+
+        })
+        .then(editor => {
+            window.editor = editor;
+
+
+
+
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            console.warn('Build id: gxyxdkt36075-nohdljl880ze');
+            console.error(error);
+        });
+</script>

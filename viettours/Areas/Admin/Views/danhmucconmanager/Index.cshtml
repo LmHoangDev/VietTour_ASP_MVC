@@ -1,0 +1,120 @@
+﻿@using viettours.Models;
+@using PagedList.Mvc;
+@*@model IEnumerable<viettours.Models.danhmuccon_select_Result>*@
+@model PagedList.IPagedList<viettours.Models.danhmuccon_select_Result>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    var a = new viettoursDBEntities().danhmucs.ToList();
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý danh mục</strong></p>
+}
+@Html.ActionLink("Tạo mới", "Create", null, new { @class = "taomoiAll" })
+<style>
+    .taomoiAll {
+        display: block;
+        padding: 10px 10px;
+        background-color: #398af8;
+        color: white;
+        line-height: 100%;
+        width: 100px;
+        text-decoration: none;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+        .taomoiAll:hover {
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<div style="text-align:right;padding:10px 0;">
+    @using (Html.BeginForm())
+    {
+        <span>
+            @Html.TextBox("SearchString", ViewBag.currentfilter as string, new { placeholder = "Tìm Kiếm" })
+            <input type="submit" value="Tìm kiếm" class="tkAll" />
+
+        </span>
+        <style>
+            .tkAll {
+                background-color: #0ecc4c;
+                border-radius: 5px;
+                color: #fff;
+                border: 1px solid #0ecc4c;
+                padding: 4px 15px;
+            }
+        </style>
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.name)*@
+            Tên
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.mota)*@
+            Mô tả
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.type)*@
+            Loại danh mục
+        </th>
+        <th>
+            Danh mục cha
+            @*@Html.DisplayNameFor(model => model.danhmuccha)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mota)
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.type)*@
+                @if (item.type == 0)
+                {
+                    <span>Tour</span>
+                }
+                else if (item.type == 1)
+                {
+                    <span>Post</span>
+                }
+                else
+                {
+                    <span>Khác</span>
+                }
+            </td>
+            <td>
+                @{
+                    var e = a.Single(x => x.id == item.danhmuccha);
+                }
+                @Html.DisplayFor(modelItem => e.name)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+<nav class="post-nav" style="text-align:center;height:60px;">
+    <span style="color:#f40f0f;font-weight:600;font-family:sans-serif;font-size:15px;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    </span>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, currentfilter = ViewBag.currentfilter }))
+</nav>
+

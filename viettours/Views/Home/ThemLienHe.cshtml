@@ -1,0 +1,272 @@
+﻿@model viettours.Models.lienhe
+
+@{
+    ViewBag.Title = "ThemLienHe";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+}
+<aside id="bcn_widget-2" class="widget widget_breadcrumb_navxt catalyst-widget-area breadcrum_vt" style="margin-top:10px;">
+    <div class="widget-wrap">
+        <div class="breadcrumbs" vocab="https://schema.org/" typeof="BreadcrumbList">
+            <!-- Breadcrumb NavXT 6.6.0 -->
+            <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Viettours Incentives and Events." href="@Url.Action("TrangChu","Home")" class="home">Trang chủ</a></span> &gt; <span typeof="v:Breadcrumb"><span property="v:title">Liên hệ</span></span>
+        </div>
+    </div>
+</aside>
+<aside>
+    <header class="entry-header">
+        <h1 class="entry-title" style="font-size: 14px; color: #9c0a0a; font-weight: 700; margin-top: -20px;">Liên hệ</h1>
+    </header>
+    <div class="entry-content">
+        <div class="at-above-post-page addthis_tool"></div><p>Xin cảm ơn đã quan tâm đến các dịch vụ của Viettours, để biết thêm chi tiết về các chương trình, vui lòng liên lạc với chúng tôi theo địa chỉ văn phòng dưới đây:</p>
+        <p>
+            <strong>VĂN PHÒNG CHÍNH VIETTOURS:</strong>&nbsp;19B Mai Thị Lựu, Phường Đa Kao, Quận 1 – Tp.HCM – Việt Nam<br>
+            Điện thoại: (84.8) 3821 8218 – 3821 7217 (16 lines). Fax: (84.8) 3821 8999.<br>
+            Email: <a href="#">lambeo@gmail.com</a><br>
+            Website: <a href="#">www.viettours.com.vn</a>
+        </p>
+        <p>
+            <strong>Chi nhánh Viettours Hà Nội:</strong> 36 Đào Tấn, Quận Ba Đình – Tp.Hà Nội – Việt Nam.<br>
+            ĐT: (84-4) 3766 3636 – Fax: (84-4) 3766 3637
+        </p>
+    </div>
+</aside>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="padding-top:10px;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <table class="form-lienhe" cellpadding="1" cellspacing="1">
+            <tr>
+                <td>
+                   @* @Html.LabelFor(model => model.ten, htmlAttributes: new { @class = "control-label col-md-2" })*@ 
+                    <span class="tieude-lh">Họ tên <sub style="color:red;">*</sub></span>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.ten, new { htmlAttributes = new { @class = "" } })
+                    @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  @*  @Html.LabelFor(model => model.quocgia, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <span class="tieude-lh">Quốc gia <sub style="color:red;">*</sub></span>
+                </td>
+                <td>
+                    <select name="quocgia" id="field_8kpm3r" class="quocgiaLhe">
+                        <option value="Vietnam" selected="selected" class="">
+                            Vietnam
+                        </option>
+                        <option value="Mỹ" class="">
+                            Mỹ
+                        </option>
+                        <option value="Pháp" class="">
+                            Pháp
+                        </option>
+                        <option value="Anh" class="">
+                            Anh
+                        </option>
+                        <option value="Tàu Khựa" class="">
+                            Tàu Khựa
+                        </option>
+                        <option value="Nhật Bản" class="">
+                            Nhật Bản
+                        </option>
+                    </select>
+                   @* @Html.DropDownListFor(model => model.quocgia, new SelectList("Hà Nội", "--Chọn quốc gia--"), htmlAttributes: new { @class = "listQuocGia" })*@
+                    @Html.ValidationMessageFor(model => model.quocgia, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   @* @Html.LabelFor(model => model.dienthoai, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <span class="tieude-lh">Điện thoại</span>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.dienthoai, new { htmlAttributes = new { @class = "" } })
+                    @Html.ValidationMessageFor(model => model.dienthoai, "", new { @class = "text-danger" })
+                </td>
+
+            </tr>
+            <tr>
+
+                <td>
+                    @* @Html.LabelFor(model => model.diachi, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <span class="tieude-lh">Địa chỉ</span>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "" } })
+                    @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @*  @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <span class="tieude-lh">Email <sub style="color:red;">*</sub></span>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td style="">
+                   @* @Html.LabelFor(model => model.noidung, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <span class="tieude-lh" style="margin-top: -22px;">Nội dung</span>
+                </td>
+                <td> 
+                          @Html.TextAreaFor(model => model.noidung, new { htmlAttributes = new { @class = "",style="border:1px solid #fff;" } })
+                          @Html.ValidationMessageFor(model => model.noidung, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @*@Html.LabelFor(model => model.gioitinh, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <span class="tieude-lh">Ông / Bà</span>
+                </td>
+                <td>
+                    <div class="checkbox">
+                        <select name="gioitinh" class="quocgiaLhe">
+
+                            <option value="0">Nam</option>
+                            <option value="1">Nữ</option>
+                        </select>
+                       @* @Html.EditorFor(model => model.gioitinh)
+                        @Html.ValidationMessageFor(model => model.gioitinh, "", new { @class = "text-danger" })*@
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2" class="btn_lh" style="text-align:center;">
+                    <ul style="display:inline-block;" class="lhe-list">
+                        <li><input type="submit" value="Gửi" class="btn btn-info btnlienhe" /></li>
+                        @*<li>
+                            @Html.ActionLink("Quay lại", "TrangChu", null, new { @class = "btnThoat" })
+                        </li>*@
+                    </ul>
+                    
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    <style>
+        form {
+            background-color: #fff;
+            padding-right: 16px;
+            padding-left: 16px;
+        }
+    </style>
+}
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+*@
+
+<style>
+    * {
+    }
+
+    .listQuocGia {
+        width: 100%;
+        background-color: #eeeeee;
+    }
+   .lhe-list li{
+       display:inline-block;
+       list-style-type:none;
+   }
+    textarea {
+        width: 85%;
+        background-color: #eeeeee;
+        height: 100%;
+        border: 1px solid #fff;
+    }
+
+    .form-horizontal {
+        width: 100%;
+        min-height: 400px;
+    }
+
+    .form-lienhe {
+        width: 100%;
+        min-height: 300px;
+        margin-top: 20px;
+    }
+
+        .form-lienhe input {
+            width: 400px;
+            background-color: #eeeeee;
+            border: 1px solid #FFF;
+            
+        }
+
+    table tr {
+        width: 25px;
+        padding-top: 3px;
+        padding-left: 5px;
+        border: none !important;
+    }
+    .form-lienhe tr td{
+        text-align:right;
+    }
+    .form-lienhe .btnlienhe {
+        width: 62px;
+        background-color: #2D9DA7;
+        color: white;
+        border: none;
+        border-radius: 18px;
+       margin-right:83px;
+        padding: 3px;
+      
+    }
+
+    label {
+        text-align: center;
+        font-weight: 600;
+    }
+
+    td:visited {
+        background-color: #f1f1f1;
+    }
+
+    span.tieude-lh {
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+        span.tieude-lh.nd {
+            position: absolute;
+        }
+    @*select {
+        height: 32px;
+        border-radius: 1px;
+    }*@
+    a.btnThoat {
+        font-size: 14px;
+        background: #ec2b2b;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 10px;
+       @* position: absolute;*@
+        display: block;
+       @* top: 3px;
+        left: 416px;*@
+        text-decoration: none;
+    }
+        a.btnThoat:hover{
+            text-decoration:none;
+            background-color:black;
+            color:white;
+        }
+        td.btn_lh {
+            position: relative;
+        }
+    .quocgiaLhe {
+        background-color: #eeeeee;
+        border: 1px solid #FFF;
+        width: 400px;
+    }
+</style>

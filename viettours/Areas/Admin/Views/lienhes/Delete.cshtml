@@ -1,0 +1,93 @@
+﻿@model viettours.Models.lienhe
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý liên hệ</strong></p>
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quocgia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quocgia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dienthoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diachi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noidung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noidung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gioitinh)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.gioitinh)*@
+            @{
+                var gtinh = "";
+            }
+            @* @Html.DisplayFor(modelItem => item.gioitinh)*@
+            @if (Model.gioitinh == 0)
+            {
+                gtinh = "Nam";
+                <span>@gtinh</span>
+            }
+            else
+            {
+                gtinh = "Nữ";
+                <span>@gtinh</span>
+            }
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại", "Index")
+        </div>
+    }
+</div>

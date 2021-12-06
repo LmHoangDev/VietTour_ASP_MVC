@@ -1,0 +1,47 @@
+﻿@*@model IEnumerable<viettours.Models.danhmuc>*@
+
+@using viettours.Models;
+@using PagedList.Mvc;
+@*@model IEnumerable<viettours.Models.danhmuccon_select_Result>*@
+@model PagedList.IPagedList<danhmuc>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Danh sách danh mục";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý danh mục</strong></p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+           @* @Html.DisplayNameFor(model => model.name)*@
+            Tên danh mục
+        </th>
+        <th>
+           @* @Html.DisplayNameFor(model => model.mota)*@
+            Mô tả
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mota)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,219 @@
+﻿@using viettours.Models
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+    viettoursDBEntities db = new viettoursDBEntities();
+    var listPost = db.posts.Where(n => n.loai==1).Take(4).ToList();
+    var listTourTN = db.tours.Where(x=>x.loai==0).ToList();
+    var listTourNN = db.tours.Where(x => x.loai == 1).ToList();
+  
+}
+@section slide{
+    <aside id="text-53" style="height:350px; width: 98% ;margin: 0 auto;">
+        <div class="widget-wrap" style="height:100%;width:100%">
+            <img id="slide-img" style="width:100%;height:100%;" src="../Content/HomeTestLayout/Images/slide-viettour-1.jpg" onclick="changeImage()" />
+        </div>
+        <style>
+            .widget-wrap {
+                position: relative;
+            }
+
+            #slide-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+        <script type="text/javascript">
+            window.addEventListener('DOMContentLoaded', (event) => {
+                var index = 1;
+                changeImage = function () {
+                    var imgs = ["../Content/HomeTestLayout/Images/slide-viettour-1.jpg", "../Content/HomeTestLayout/Images/slide-viettour.jpg", "../Content/HomeTestLayout/Images/slide-viettour-2.jpg"];
+                    document.getElementById("slide-img").src = imgs[index];
+                    index++;
+                    if (index == 3) {
+                        index = 0;
+                    }
+                }
+                setInterval(changeImage, 3000);
+            });
+        </script>
+    </aside>
+}
+<aside class="widget widget_text catalyst-widget-area center_home">
+    <div class="widget-wrap">
+        <div class="textwidget" style="box-sizing:border-box;">
+            <div class="tieude_tourmoi">
+                Tour mới - Trong nước
+            </div>
+            <div class="slide_tourmoi">
+                <div id="touchcarousel-1" class="touchcarousel grey-blue tc-layout-4" style="width: 550px; height: 180px; overflow: visible;">
+                    <div>
+                        <div class="item">
+                            <ul id="content-slider" class="content-slider">
+                             
+                                @foreach (var item in listTourTN)
+                                {
+                                    <li style="overflow:hidden;">
+                                        <a href="../toursss/DisplayDetailTour?id=@item.id &nameTour=@item.name" style="display:block;width:100%;height:100%;text-decoration:none;">
+                                            <div style="width:133.75px;height:133.75px;">
+                                                <img src="@Url.Content(Common.tourfolder + item.anh)" style="width:100%;height:100%" />
+                                            </div>
+                                                <span style="margin-top: 7px;text-align:left ;font-family: sans-serif;">
+                                                    @item.name
+                                                </span>
+                                            
+                                            
+                                        </a>
+
+                                    </li>
+                                    }            
+                            </ul>
+                        </div>
+                   
+                </div>
+             
+            </div>
+        </div>
+    </div>
+        </div>
+</aside>
+<aside class="widget widget_text catalyst-widget-area center_home">
+    <div class="widget-wrap">
+        <div class="textwidget" style="box-sizing:border-box;">
+            <div class="tieude_tourmoi">
+                Tour mới - Nước ngoài
+            </div>
+            <div class="slide_tourmoi">
+                <div id="touchcarousel-3" class="touchcarousel grey-blue tc-layout-4" style="width: 550px; height: 180px; overflow: visible;">
+                    <div>
+                        <div class="item">
+                            <ul id="content-slider-1" class="content-slider">
+                                
+                                @foreach (var item in listTourNN)
+                                {
+                                    <li style="overflow:hidden;">
+                                        <a href="../toursss/DisplayDetailTour?id=@item.id &nameTour=@item.name" style="display:block;width:100%;height:100%;text-decoration:none;">
+                                            <div style="width:133.75px;height:133.75px;">
+                                                <img src="@Url.Content(Common.tourfolder + item.anh)" style="width:100%;height:100%" />
+                                            </div>
+                                            <span style="margin-top: 7px; font-family: sans-serif;">
+                                                @item.name
+                                            </span>
+
+
+                                        </a>
+
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</aside>
+<aside id="text-58" class="widget widget_text catalyst-widget-area center_home">
+    <div class="widget-wrap">
+        <div class="textwidget">
+            <div class="tieude_tintucsukien">
+                Tin tức sự kiện du lịch
+            </div>
+        </div>
+    </div>
+</aside>
+<aside id="excerpt-widget-plus-9" class="widget excerpt-widget-plus catalyst-widget-area center_home">
+    <div class="widget-wrap">
+
+        @foreach (var item in listPost)
+        {
+            <div class="">
+                <div class="">
+                    <h2 class="entry-title"><a href="@Url.Action("DisplayDetailPost","postss",new {id=item.id,title=item.title })" title="@item.title">@item.title</a></h2>
+                    <div class="entry-content"><p></p></div>
+                </div>
+            </div><div style="clear:both;"></div>
+        }
+    </div>
+    <div style="clear:both;"></div>
+
+
+
+</aside>
+<style>
+    h2.entry-title {
+        font-size: 15px;
+    }
+    ul#content-slider {
+        list-style: none outside none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .demo .item {
+        margin-bottom: 0px;
+    }
+
+    .content-slider li {
+        background-color: #fff;
+        text-align: center;
+        color: #FFF;
+    }
+
+    .content-slider h3 {
+        margin: 0;
+        padding: 70px 0;
+    }
+
+    .demo {
+        width: 100%;
+    }
+    ul.lSPager.lSpg {
+        display:none;
+        visibility:hidden;
+    }
+</style>
+<link href="~/Content/TouchCarousel/lightslider.css" rel="stylesheet" />
+<script src="~/Content/TouchCarousel/lightslider.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#content-slider").lightSlider({
+            loop: true,
+            keyPress: true
+        });
+        $('#image-gallery').lightSlider({
+            gallery: true,
+            item: 1,
+            thumbItem: 9,
+            slideMargin: 0,
+            speed: 500,
+            auto: true,
+            loop: true,
+            onSliderLoad: function () {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+    });
+    $(document).ready(function () {
+        $("#content-slider-1").lightSlider({
+            loop: true,
+            keyPress: true
+        });
+        $('#image-gallery').lightSlider({
+            gallery: true,
+            item: 1,
+            thumbItem: 9,
+            slideMargin: 0,
+            speed: 500,
+            auto: true,
+            loop: true,
+            onSliderLoad: function () {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+    });
+</script>

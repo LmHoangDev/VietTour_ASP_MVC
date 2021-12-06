@@ -1,0 +1,73 @@
+﻿@model IEnumerable<viettours.Models.dattour>
+@using viettours.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+    var db = new viettoursDBEntities();
+}
+<h2 style="text-align:center;color:#fc2b2b;font-weight:600">Lịch sử đặt tour</h2>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+           @* @Html.DisplayNameFor(model => model.ten)*@ 
+            Tên Khách hàng
+        </th>
+        <th>
+           @* @Html.DisplayNameFor(model => model.tour.name)*@ 
+            Tên tour
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loaipid)
+        </th>
+        <th>
+            Hướng dẫn
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model)
+{
+    <tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ten)
+    </td>
+    <td>
+        @{
+            var tour = db.tours.Single(x => x.id == item.tour_id);
+        }
+        @Html.DisplayFor(modelItem => tour.name)
+    </td>
+    <td>
+        <img src="@Url.Content(Common.tourfolder + tour.anh)" style="width:70px;height:80px;"/>
+    </td>
+    <td>
+        <span>@item.start.ToString("MM/dd/yyyy")</span>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.loaipid)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.huongdan_id)
+    </td>
+    <td>
+       
+        @Html.ActionLink("Xem chi tiết", "Details", new { id = item.id })
+    
+    </td>
+</tr>
+}
+
+</table>
+<style>
+    td{
+        border:none;
+    }
+</style>

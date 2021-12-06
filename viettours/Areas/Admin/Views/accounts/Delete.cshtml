@@ -1,0 +1,86 @@
+﻿@model viettours.Models.account
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý tài khoản</strong></p>
+}
+@*<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>*@
+<div>
+  @*  <h4>account</h4>
+    <hr />*@
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pass)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diachi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quyenhan)
+        </dt>
+
+        <dd>
+           @* @Html.DisplayFor(model => model.quyenhan)*@
+
+            @* @Html.DisplayFor(modelItem => item.gioitinh)*@
+            @if (Model.quyenhan == 2)
+            {
+                <span>Khách hàng</span>
+            }
+            else if (Model.quyenhan == 1)
+            {
+                <span>Mod</span>
+            }
+            else
+            {
+               
+                <span>Admin</span>
+            }
+        </dd>
+
+    </dl>
+    @if (@ViewBag.error != null)
+    {<p class="alert alert-danger"> @ViewBag.error</p>
+}
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại", "Index")
+        </div>
+    }
+</div>

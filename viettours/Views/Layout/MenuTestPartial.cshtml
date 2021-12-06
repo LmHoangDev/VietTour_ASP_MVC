@@ -1,0 +1,52 @@
+﻿
+@using viettours
+@using viettours.Models
+@{
+    viettoursDBEntities db = new viettoursDBEntities();
+    var dmc = db.danhmuccha_select();
+    var danhmuclist = db.danhmuccon_select_all().ToList();
+}
+<nav id="navbar-1" class="clearfix" role="navigation" style="width:100%;height:100%;">
+    <div class="main-menu">
+        <ul class="menu-list">
+            @foreach (var dm in dmc)
+            {
+            <li>
+                @Html.ActionLink(dm.name, "../Home/chondanhmuc", new { id = dm.id })
+                @{
+                    var dmc1 = danhmuclist.Where(x => x.danhmuccha == dm.id);
+                    int loai;
+
+
+                }
+                @if (dmc1.Count() != 0)
+                {
+                    <ul class="sub-menu">
+                        @foreach (var x in dmc1)
+                        {
+                            <li>
+                                @*  @Html.ActionLink("gettourbydm", "tour", new { iddanhmuc = x.id })*@
+                                @Html.ActionLink(x.name, "../Home/chondanhmuc", new { id = x.id})
+                                @{
+                                    var dmc2 = danhmuclist.Where(e => e.danhmuccha == x.id);
+
+                                }
+                                @if (dmc2.Count() != 0)
+                                {
+                                    <ul class="sub-menu">
+                                        @foreach (var e in dmc2)
+                                        {
+                                        <li> @Html.ActionLink(e.name, "../Home/chondanhmuc", new { id = e.id })</li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+            }
+        </ul>
+    </div>
+</nav>
+>

@@ -1,0 +1,106 @@
+﻿@model viettours.Models.post
+@using viettours.Models
+@{
+    ViewBag.Title = "Chi tiết";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    var db = new viettoursDBEntities();
+}
+@section menulinkadmin{
+    <p class="home"><a href="~/Admin/Home/Index">Home</a> > <strong>Quản lý bài viết</strong></p>
+}
+
+<div style="overflow:hidden;">
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
+
+            <dt>
+                Ảnh
+            </dt>
+
+            <dd>
+
+                @{ string ImagePath = Common.postfolder + Model.anh;}
+                <img src="@Url.Content(ImagePath)" width="100" height="80" class="img-thumbnail" />
+                <br />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.loai)
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.loai)*@
+
+                @if (Model.loai == 0)
+                {
+
+
+                    <span>Tin tức sự kiện</span>
+                }
+                else
+                {
+                    <span>Khác</span>
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.motangan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.motangan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.id_danhmuc)
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.id_danhmuc)*@
+                @{
+                    var a = db.danhmucs.SingleOrDefault(x => x.id == Model.id_danhmuc);
+                }
+                @if (a != null)
+                {
+                    <span>@a.name</span>
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.mota)
+            </dt>
+
+        </dl>
+
+    </div>
+
+</div>
+<div class="ndBaiVietChiTiet">
+    @Html.Raw(Model.mota)
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Trở lại", "Index")
+</p>
+
+<style>
+    .ndBaiVietChiTiet {
+        width: 800px;
+        max-height: 500px;
+        overflow: scroll;
+        padding-left: 20px;
+        margin:0 auto;
+    }
+
+        .ndBaiVietChiTiet img {
+            width: 100%;
+        }
+</style>

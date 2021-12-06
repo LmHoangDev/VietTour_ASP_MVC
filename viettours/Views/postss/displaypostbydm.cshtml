@@ -1,0 +1,36 @@
+﻿
+@using viettours.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<post>
+@using viettours.Custom_Helpers
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "displaypostbydm";
+    Layout = "~/Views/Layout/HomeTestLayout.cshtml";
+}
+@section menulink{
+    <aside id="bcn_widget-2" class="widget widget_breadcrumb_navxt catalyst-widget-area breadcrum_vt" style="margin-top:10px;">
+        <div class="widget-wrap">
+            <div class="breadcrumbs" vocab="https://schema.org/" typeof="BreadcrumbList">
+                <!-- Breadcrumb NavXT 6.6.0 -->
+                <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" title="Go to Viettours Incentives and Events." href="@Url.Action("TrangChu","Home")" class="home">Trang chủ</a></span> &gt; <span typeof="v:Breadcrumb"><span property="v:title">@ViewBag.tendm</span></span>
+            </div>
+        </div>
+    </aside>
+}
+@foreach (var item in Model)
+{
+    @Html.khoi_BaiViet(item)
+}
+@*  phân trang *@
+<nav class="post-nav" style="text-align:center;height:60px;">
+    <span style="color:#f40f0f;font-weight:600;font-family:sans-serif;;font-size:15px;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    </span>
+    @Html.PagedListPager(Model, page => Url.Action("displaypostbydm", new { page = page , id_danhmuc=ViewBag.id_danhmuc }))
+</nav>
+
+
+
+
+
